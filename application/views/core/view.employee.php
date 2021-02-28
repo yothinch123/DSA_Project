@@ -1,10 +1,10 @@
 <div class="container-fluid" id="container-wrapper" style="margin-top: 90px;">
   <div class="row mb-3">
-    <!-- Area Chart -->
     <div class="col-xl-12 col-lg-12">
       <div class="card mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h3 class="m-0">ข้อมูลพนักงาน</h3>
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #3490de;">
+          <h5 class="m-0 text-white">ข้อมูลพนักงาน</h5>
+          <button class="btn btn-success">เพิ่มพนักงาน <i class="fas fa-user-plus"></i></button>
         </div>
         <div class="card-body">
           <div class="col-lg-12">

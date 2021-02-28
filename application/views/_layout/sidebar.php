@@ -10,35 +10,35 @@
     <li class="nav-item active">
         <a class="nav-link" href=" ">
             <i class="far fa-chart-bar"></i>
-            <span>แดชบอร์ด</span>
+            <span style="font-size: medium;">แดชบอร์ด</span>
         </a>
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
         Features
     </div>
-    <li class="nav-item  ">
+    <li class="nav-item">
         <a class="nav-link" href=" ">
             <i class="fas fa-wifi"></i>
-            <span>ตั้งค่า Wi-Fi</span>
+            <span style="font-size: medium;">ตั้งค่า Wi-Fi</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href=" ">
             &nbsp;<i class="far fa-file-alt"></i>
-            <span>รายละเอียดและสถิติข้อมูล</span>
+            <span style="font-size: medium;">รายละเอียดและสถิติข้อมูล</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href=" ">
             <i class="fas fa-users"></i>
-            <span>ข้อมูลพนักงาน</span>
+            <span style="font-size: medium;">ข้อมูลพนักงาน</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href=" ">
             <i class="fab fa-fw fa-wpforms"></i>
-            <span>ข้อมูลส่วนตัว</span>
+            <span style="font-size: medium;">ข้อมูลส่วนตัว</span>
         </a>
     </li>
     <hr class="sidebar-divider">
