@@ -8,9 +8,9 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-        <a class="nav-link" href=" ">
+        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_dashboard'" style="color: #222831;">
             <i class="far fa-chart-bar"></i>
-            <span style="font-size: medium;">แดชบอร์ด</span>
+            <span>แดชบอร์ด</span>
         </a>
     </li>
     <hr class="sidebar-divider">
@@ -18,27 +18,27 @@
         Features
     </div>
     <li class="nav-item">
-        <a class="nav-link" href=" ">
+        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_wifi_setting'" style="color: #222831;">
             <i class="fas fa-wifi"></i>
-            <span style="font-size: medium;">ตั้งค่า Wi-Fi</span>
+            <span>ตั้งค่า Wi-Fi</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href=" ">
-            &nbsp;<i class="far fa-file-alt"></i>
-            <span style="font-size: medium;">รายละเอียดและสถิติข้อมูล</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href=" ">
-            <i class="fas fa-users"></i>
-            <span style="font-size: medium;">ข้อมูลพนักงาน</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href=" ">
+        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_statistics'" style="color: #222831;">
             <i class="fab fa-fw fa-wpforms"></i>
-            <span style="font-size: medium;">ข้อมูลส่วนตัว</span>
+            <span>รายละเอียดและสถิติ</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_employee'" style="color: #222831;">
+            <i class="fas fa-users"></i>
+            <span>ข้อมูลพนักงาน</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_employee_detail'" style="color: #222831;">
+            <i class="fas fa-user-edit"></i>
+            <span>ข้อมูลส่วนตัว</span>
         </a>
     </li>
     <hr class="sidebar-divider">
