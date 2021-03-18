@@ -24,23 +24,22 @@ class EmployeeController extends CI_Controller
   {
     $file_input = [];
     $file_input = json_decode(file_get_contents("php://input"));
-    // if (count($file_input) > 0) {
-    $data = array(
-      'fname'  =>  $file_input->fname,
-      'lname' => $file_input->lname,
-      'ssn'  => $file_input->ssn,
-      'phone'  => $file_input->phone,
-      'username' => $file_input->username,
-      'password'  => $file_input->password,
-      'jobtitle'  => $file_input->jobtitle,
-    );
-    // }
-    // $result = true;
+    if (count($file_input) > 0) {
+      $data = array(
+        'fname'  =>  $file_input->fname,
+        'lname' => $file_input->lname,
+        'ssn'  => $file_input->ssn,
+        'phone'  => $file_input->phone,
+        'username' => $file_input->username,
+        'password'  => $file_input->password,
+        'jobtitle'  => $file_input->jobtitle,
+      );
+    }
     $result = $this->EmployeeModel->insertEmployee($data);
     if ($result) {
-      echo "successsss11";
+      echo true;
     } else {
-      echo "faillll";
+      echo false;
     }
   }
 
@@ -50,5 +49,14 @@ class EmployeeController extends CI_Controller
 
   public function deleteEmployee()
   {
+    $file_input = [];
+    $file_input = json_decode(file_get_contents("php://input"));
+    $id = $file_input->id;
+    $result = $this->EmployeeModel->deleteEmployee($id);
+    if ($result) {
+      echo true;
+    } else {
+      echo false;
+    }
   }
 }

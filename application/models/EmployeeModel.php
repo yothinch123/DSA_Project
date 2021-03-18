@@ -29,13 +29,17 @@ class EmployeeModel extends CI_Model
 
   function insertEmployee($data)
   {
-    $this->db->insert('employee', $data);
-    return true;
+    $query =  $this->db->insert('employee', $data);
+    if ($query) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  function deleteEmployee($data)
+  function deleteEmployee($id)
   {
-    $this->db->where('id', $data);
+    $this->db->where('id', $id);
     $this->db->delete('employee');
     return true;
   }
