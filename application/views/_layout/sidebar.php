@@ -8,7 +8,7 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_dashboard'" style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_dashboard'" style="color: #222831;">
             <i class="far fa-chart-bar"></i>
             <span>แดชบอร์ด</span>
         </a>
@@ -18,25 +18,28 @@
         Features
     </div>
     <li class="nav-item">
-        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_wifi_setting'" style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_wifi_setting'"
+            style="color: #222831;">
             <i class="fas fa-wifi"></i>
             <span>ตั้งค่า Wi-Fi</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_statistics'" style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_statistics'"
+            style="color: #222831;">
             <i class="fab fa-fw fa-wpforms"></i>
             <span>รายละเอียดและสถิติ</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_employee'" style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_employee'" style="color: #222831;">
             <i class="fas fa-users"></i>
             <span>ข้อมูลพนักงาน</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" onclick="window.location.href='/CPE/index.php/BaseController/view_employee_detail'" style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_employee_detail'"
+            style="color: #222831;">
             <i class="fas fa-user-edit"></i>
             <span>ข้อมูลส่วนตัว</span>
         </a>
