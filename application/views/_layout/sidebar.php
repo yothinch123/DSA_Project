@@ -18,15 +18,13 @@
         Features
     </div>
     <li class="nav-item">
-        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_wifi_setting'"
-            style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_wifi_setting'" style="color: #222831;">
             <i class="fas fa-wifi"></i>
             <span>ตั้งค่า Wi-Fi</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_statistics'"
-            style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_statistics'" style="color: #222831;">
             <i class="fab fa-fw fa-wpforms"></i>
             <span>รายละเอียดและสถิติ</span>
         </a>
@@ -38,12 +36,16 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_employee_detail'"
-            style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_employee_detail'" style="color: #222831;">
             <i class="fas fa-user-edit"></i>
             <span>ข้อมูลส่วนตัว</span>
         </a>
     </li>
     <hr class="sidebar-divider">
 </ul>
+<style>
+    li {
+        cursor: pointer;
+    }
+</style>
 <!-- Sidebar -->

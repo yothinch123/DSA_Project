@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="modal-footer bg-white" style="height: 75px;">
-          <button type="submit" ng-click="insert()" class="btn btn-primary">บันทึก</button>
+          <button type="submit" ng-click="_insert()" class="btn btn-primary">บันทึก</button>
           <a href="" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
         </div>
         </form>
@@ -87,7 +87,7 @@
   var app = angular.module('insertEmployeeApp', []);
 
   app.controller('insertEmployeeCtrl', function($scope, $http) {
-    $scope.insert = function() {
+    $scope._insert = function() {
       $http.post("<?php echo base_url("EmployeeController/insertEmployee"); ?>", {
         'ssn': $scope.ssn,
         'fname': $scope.fname,

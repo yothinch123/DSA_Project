@@ -10,20 +10,16 @@ class EmployeeModel extends CI_Model
 
   function getEmployeeBy()
   {
-    $sql = "SELECT * 
-    FROM employee";
-
-    $query = $this->db->query($sql);
+    $query = $this->db->get('employee');
     return $query->result();
   }
 
-  function getEmployeeByCode($data)
+  function getEmployeeByCode($id)
   {
-    $sql = "SELECT * 
-    FROM employee
-    WHERE ssn = '$data'";
 
-    $query = $this->db->query($sql);
+    $where_cond = array('id' => $id);
+    $query =  $this->db->get_where('employee', $where_cond);
+
     return $query->result();
   }
 
@@ -49,6 +45,7 @@ class EmployeeModel extends CI_Model
     extract($data);
     $this->db->where('ssn', $ssn);
     $this->db->update('employee', $data);
-    return true;
+    $query = $this->db->get();
+    return $query;
   }
 }

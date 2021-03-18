@@ -35,6 +35,16 @@ class BaseController extends CI_Controller
     $this->load->view('_layout/footer');
   }
 
+  public function view_employee_update()
+  {
+    $data['title'] = '';
+    $this->load->view('_layout/header');
+    $this->load->view('_layout/sidebar');
+    $this->load->view('_layout/topbar');
+    $this->load->view('employee/update.php', $data);
+    $this->load->view('_layout/footer');
+  }
+
   public function view_dashboard()
   {
     $data = '';

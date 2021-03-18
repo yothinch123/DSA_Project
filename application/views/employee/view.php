@@ -9,7 +9,7 @@
          <div class="card-body" ng-app="myApp" ng-controller="employeeCtrl">
            <div class="col-lg-12">
              <div class="table-responsive p-3">
-               <table class="table table-hover table-striped table-borderless" id="TableEmployee" ng-init="fetchData()">
+               <table class="table table-hover table-striped table-borderless" id="TableEmployee" ng-init="_fetchData()">
                  <thead style="border-bottom: 1px solid #5f6769;">
                    <tr>
                      <th>ลำดับ</th>
@@ -19,20 +19,20 @@
                      <th>ชื่อผู้ใช้</th>
                      <th>ตำแหน่ง</th>
                      <th>จัดการ</th>
-                     <th>#</th>
+                     <th></th>
                    </tr>
                  </thead>
                  <tbody>
                    <tr ng-repeat="item in datas">
-                     <td>{{ item.id }}</td>
+                     <td>{{ $index + 1 }}</td>
                      <td>{{ item.fname }}</td>
                      <td>{{ item.lname }}</td>
                      <td>{{ item.phone }}</td>
                      <td>{{ item.username }}</td>
                      <td>{{ item.jobtitle }}</td>
                      <td>
-                       <button class="btn btn-warning btn-sm"><i class="far fa-edit"></i></button>
-                       <button id={{item.id}} class="btn btn-danger btn-sm" ng-click="deleteID(item.id)" value='Delete'><i class="fas fa-trash"></i></button>
+                       <a href="http://localhost/CPE/BaseController/view_employee_update?id={{item.id}}" class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
+                       <button id={{item.id}} class="btn btn-danger btn-sm" ng-click="_deleteID(item.id)" value='Delete'><i class="fas fa-trash"></i></button>
                      </td>
                      <td>
                        <button class="btn btn-link btn-sm text-dark">ประวัติการเข้าสู่ระบบ</button>
@@ -51,13 +51,13 @@
    <script>
      var app = angular.module('myApp', []);
      app.controller('employeeCtrl', function($scope, $http) {
-       $scope.fetchData = function() {
+       $scope._fetchData = function() {
          $http.post("<?php echo base_url("EmployeeController/getEmployeeBy"); ?>").then(
-           function mySuccess(response) {
+           function(response) {
              $scope.datas = response.data;
            });
        }
-       $scope.deleteID = function(id) {
+       $scope._deleteID = function(id) {
          $http.post("<?php echo base_url("EmployeeController/deleteEmployee"); ?>", {
            'id': id,
          }).then(function(response) {
@@ -66,7 +66,7 @@
                title: "ลบพนักงานสำเร็จ !",
                icon: 'success',
              }).then(function() {
-               $scope.fetchData();
+               $scope._fetchData();
              })
            } else {
              Swal.fire({
