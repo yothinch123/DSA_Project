@@ -97,7 +97,8 @@
         'phone': $scope.phone,
         'jobtitle': $scope.jobtitle,
       }).then(function(response) {
-        if (response) {
+        console.log("response : ",response.data);
+        if (response.data === "1") {
           Swal.fire({
             title: "เพิ่มพนักงานสำเร็จ !",
             icon: 'success',

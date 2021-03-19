@@ -44,8 +44,7 @@ class EmployeeModel extends CI_Model
   {
     extract($data);
     $this->db->where('ssn', $ssn);
-    $this->db->update('employee', $data);
-    $query = $this->db->get();
+    $query = $this->db->update('employee', $data);
     return $query;
   }
 }

@@ -85,23 +85,23 @@
 <script>
   var app = angular.module('updateEmployeeApp', []);
 
-  app.controller('updateEmployeeCtrl', function($scope, $http, $location) {
+  app.controller('updateEmployeeCtrl', function($scope, $http) {
     $scope._fetchData = function() {
       var id = "<?php echo $_GET['id'] ?>"
       $http.post("<?php echo base_url("EmployeeController/getEmployeeByCode"); ?>", {
         'id': id
-      }).then(
-        function(response) {
-          for (data of response.data) {
-            $scope.ssn = data.ssn,
-              $scope.fname = data.fname,
-              $scope.lname = data.lname,
-              $scope.username = data.username,
-              $scope.password = data.password,
-              $scope.phone = data.phone,
-              $scope.jobtitle = data.jobtitle
-          }
-        });
+      }).then(function(response) {
+        console.log("response : ", response.data);
+        for (data of response.data) {
+          $scope.ssn = data.ssn,
+            $scope.fname = data.fname,
+            $scope.lname = data.lname,
+            $scope.username = data.username,
+            $scope.password = data.password,
+            $scope.phone = data.phone,
+            $scope.jobtitle = data.jobtitle
+        }
+      });
     }
     $scope._update = function() {
       $http.post("<?php echo base_url("EmployeeController/updateEmployee"); ?>", {
@@ -113,7 +113,7 @@
         'phone': $scope.phone,
         'jobtitle': $scope.jobtitle,
       }).then(function(response) {
-        if (response) {
+        if (response.data === "1") {
           Swal.fire({
             title: "อัพเดตข้อมูลสำเร็จ !",
             icon: 'success',

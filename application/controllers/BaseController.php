@@ -56,9 +56,10 @@ class BaseController extends CI_Controller
   }
   public function view_login()
   {
-    $this->load->view('_layout/auth-header');
-    $this->load->view('element/page/login.employee.php');
-    $this->load->view('_layout/auth-footers');
+    $this->load->view('_layout/header');
+    $this->load->view('login/index.php');    
+    $this->load->view('_layout/footer');
+
   }
   public function view_wifi_setting()
   {

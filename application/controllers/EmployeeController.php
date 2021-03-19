@@ -10,6 +10,12 @@ class EmployeeController extends CI_Controller
     $this->load->database();
     $this->load->model('EmployeeModel');
   }
+
+  public function hashPassword($password)
+  {
+    return password_hash($password, PASSWORD_BCRYPT);
+  }
+
   public function getEmployeeBy()
   {
     $result = $this->EmployeeModel->getEmployeeBy();
@@ -33,17 +39,16 @@ class EmployeeController extends CI_Controller
   {
     $file_input = [];
     $file_input = json_decode(file_get_contents("php://input"));
-    if (count($file_input) > 0) {
-      $data = array(
-        'fname'  =>  $file_input->fname,
-        'lname' => $file_input->lname,
-        'ssn'  => $file_input->ssn,
-        'phone'  => $file_input->phone,
-        'username' => $file_input->username,
-        'password'  => $file_input->password,
-        'jobtitle'  => $file_input->jobtitle,
-      );
-    }
+    $password = $this->hashPassword($file_input->password); 
+    $data = array(
+      'fname'  =>  $file_input->fname,
+      'lname' => $file_input->lname,
+      'ssn'  => $file_input->ssn,
+      'phone'  => $file_input->phone,
+      'username' => $file_input->username,
+      'password'  => $password,
+      'jobtitle'  => $file_input->jobtitle,
+    );
     $result = $this->EmployeeModel->insertEmployee($data);
     if ($result) {
       echo true;
@@ -56,17 +61,15 @@ class EmployeeController extends CI_Controller
   {
     $file_input = [];
     $file_input = json_decode(file_get_contents("php://input"));
-    if (count($file_input) > 0) {
-      $data = array(
-        'fname'  =>  $file_input->fname,
-        'lname' => $file_input->lname,
-        'ssn'  => $file_input->ssn,
-        'phone'  => $file_input->phone,
-        'username' => $file_input->username,
-        'password'  => $file_input->password,
-        'jobtitle'  => $file_input->jobtitle,
-      );
-    }
+    $data = array(
+      'fname'  =>  $file_input->fname,
+      'lname' => $file_input->lname,
+      'ssn'  => $file_input->ssn,
+      'phone'  => $file_input->phone,
+      'username' => $file_input->username,
+      'password'  => $file_input->password,
+      'jobtitle'  => $file_input->jobtitle,
+    );
     $result = $this->EmployeeModel->updateEmployee($data);
     if ($result) {
       echo true;
