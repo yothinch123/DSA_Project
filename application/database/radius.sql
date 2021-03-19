@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2021 at 09:47 AM
+-- Generation Time: Mar 19, 2021 at 11:00 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -331,9 +331,11 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `ssn`, `fname`, `lname`, `username`, `password`, `phone`, `jobtitle`) VALUES
-(1, '1309902628376', 'โยธิน', 'ช่องผักแว่น', 'yothin', 'yothin', '0935538303', 'เจ้าของร้าน'),
-(2, '1309902628375', 'จีรวัฒน์', 'แทนไธสง', 'yothin', 'asda', '935698569', 'พนักงาน'),
-(3, '1309902628374', 'ชัชวาลย์', 'น้อมพุดซา', 'chatchawan', 'adasd', '086585478', 'พนักงาน');
+(28, '1309902628375', 'โยธิน', 'ช่องผักแว่น', 'yothin', '$2y$10$HPP/m9gdtnTaBtjcARLW5.YheZ7eM3mM4lOFDzt/PK4OuXWBVyKQW', '0935538303', 'เจ้าของร้าน'),
+(29, '1100280006940', 'ชัยธวัช', 'น้อมพุดซา', 'chaitawat', '$2y$10$gnGLk//5dOu9T1QnXXdWpOoXisqPFG/6eMgdkYXmQq01ZcCslnoOu', '0839348581', 'เจ้าของร้าน'),
+(30, '1309902029272', 'จีรวัฒน์', 'แทนไธสง', 'jeerawat', '$2y$10$P8Np5STGi7Q3ChqKA/oEQ.Zyyj4uJUkKTIyjLGPfsWcd9LvTO/ja.', '0987676589', 'พนักงาน'),
+(31, '1109890254536', 'ชัชวาลย์', 'น้อมพุดซา', 'chatchawan', '$2y$10$QO1UI6WR5T/KI9l0R5W7LeD91717TQ.kRvnGF6UM6IEftpvsW.bZe', '0917658473', 'พนักงาน'),
+(32, '1302948576859', 'ศิริวิริยา', 'หมื่นฤทธิ์', 'siriwiriya', '$2y$10$m6GmGS7K/A9V2UmLxkxU/eAAHrcZqlX4.MsuFLJz9eM1.1NEExuB6', '0867546378', 'พนักงาน');
 
 -- --------------------------------------------------------
 
@@ -565,7 +567,7 @@ ALTER TABLE `customer_register`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `employee_jobtitle`
