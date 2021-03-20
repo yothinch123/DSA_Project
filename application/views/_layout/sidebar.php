@@ -36,7 +36,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_employee_detail'" style="color: #222831;">
+        <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_user'" style="color: #222831;">
             <i class="fas fa-user-edit"></i>
             <span>ข้อมูลส่วนตัว</span>
         </a>

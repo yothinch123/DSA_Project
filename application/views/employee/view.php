@@ -23,16 +23,16 @@
                    </tr>
                  </thead>
                  <tbody>
-                   <tr ng-repeat="item in datas">
+                   <tr ng-repeat="employee in employees">
                      <td>{{ $index + 1 }}</td>
-                     <td>{{ item.fname }}</td>
-                     <td>{{ item.lname }}</td>
-                     <td>{{ item.phone }}</td>
-                     <td>{{ item.username }}</td>
-                     <td>{{ item.jobtitle }}</td>
+                     <td>{{ employee.fname }}</td>
+                     <td>{{ employee.lname }}</td>
+                     <td>{{ employee.phone }}</td>
+                     <td>{{ employee.username }}</td>
+                     <td>{{ employee.jobtitle }}</td>
                      <td>
-                       <a href="http://localhost/CPE/BaseController/view_employee_update?id={{item.id}}" class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
-                       <button id={{item.id}} class="btn btn-danger btn-sm" ng-click="_deleteID(item.id)" value='Delete'><i class="fas fa-trash"></i></button>
+                       <a href="http://localhost/CPE/BaseController/view_employee_update?id={{employee.id}}" class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
+                       <button id={{employee.id}} class="btn btn-danger btn-sm" ng-click="_deleteID(employee.id)" value='Delete'><i class="fas fa-trash"></i></button>
                      </td>
                      <td>
                        <button class="btn btn-link btn-sm text-dark">ประวัติการเข้าสู่ระบบ</button>
@@ -54,7 +54,7 @@
        $scope._fetchData = function() {
          $http.post("<?php echo base_url("EmployeeController/getEmployeeBy"); ?>").then(
            function(response) {
-             $scope.datas = response.data;
+             $scope.employees = response.data;
            });
        }
        $scope._deleteID = function(id) {

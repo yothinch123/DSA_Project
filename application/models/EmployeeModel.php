@@ -20,7 +20,7 @@ class EmployeeModel extends CI_Model
     $where_cond = array('id' => $id);
     $query =  $this->db->get_where('employee', $where_cond);
 
-    return $query->result();
+    return $query->row();
   }
 
   function insertEmployee($data)
@@ -43,8 +43,30 @@ class EmployeeModel extends CI_Model
   function updateEmployee($data)
   {
     extract($data);
-    $this->db->where('ssn', $ssn);
-    $query = $this->db->update('employee', $data);
+    $sql = "UPDATE employee SET 
+    ssn = '$ssn',
+    fname = '$fname',
+    lname = '$lname',
+    username = '$username', 
+    phone = '$phone',
+    jobtitle = '$jobtitle'
+    WHERE id = '$id'
+    ";
+
+    $query = $this->db->query($sql);
+    return $query;
+  }
+
+  function updatePasswordEmp($data)
+  {
+    extract($data);
+    
+    $sql = "UPDATE employee SET 
+    password = '$password', 
+    WHERE id = '$id'
+    ";
+
+    $query = $this->db->query($sql);
     return $query;
   }
 }

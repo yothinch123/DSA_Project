@@ -8,14 +8,11 @@ class BaseController extends CI_Controller
     parent::__construct();
     $this->load->database();
     $this->load->model('EmployeeModel');
+    $this->load->helper('url');
   }
   public function index()
   {
-    $this->load->view('_layout/header');
-    $this->load->view('_layout/sidebar');
-    $this->load->view('_layout/topbar');
-    $this->load->view('employee/view.php');
-    $this->load->view('_layout/footer');
+    $this->view_login();
   }
   public function view_employee()
   {
@@ -25,6 +22,16 @@ class BaseController extends CI_Controller
     $this->load->view('employee/view.php');
     $this->load->view('_layout/footer');
   }
+  
+  public function view_user()
+  {
+    $this->load->view('_layout/header');
+    $this->load->view('_layout/sidebar');
+    $this->load->view('_layout/topbar');
+    $this->load->view('user/index.php');
+    $this->load->view('_layout/footer');
+  }
+  
   public function view_employee_insert()
   {
     $data['title'] = '';

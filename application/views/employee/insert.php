@@ -72,7 +72,7 @@
               </div>
             </div>
         </div>
-        <div class="modal-footer bg-white" style="height: 75px;">
+        <div class="card-footer text-right bg-white" style="height: 75px;">
           <button type="submit" ng-click="_insert()" class="btn btn-primary">บันทึก</button>
           <a href="" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
         </div>
