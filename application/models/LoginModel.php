@@ -8,7 +8,7 @@ class LoginModel extends CI_Model
         parent::__construct();
     }
 
-    function checkLoginBy($username)
+    function check_login_by($username)
     {
         $this->db->where('username', $username);
         $query = $this->db->get('employee');

@@ -18,7 +18,7 @@ class EmployeeController extends CI_Controller
 
   public function getEmployeeBy()
   {
-    $result = $this->EmployeeModel->getEmployeeBy();
+    $result = $this->EmployeeModel->fetch_employee_by();
     echo json_encode($result);
   }
 
@@ -26,7 +26,7 @@ class EmployeeController extends CI_Controller
   {
     $file_input = json_decode(file_get_contents("php://input"));
     $id = $file_input->id;
-    $result = $this->EmployeeModel->getEmployeeByCode($id);
+    $result = $this->EmployeeModel->fetch_employee_by_code($id);
     if ($result) {
       echo json_encode($result);
     } else {
@@ -47,14 +47,13 @@ class EmployeeController extends CI_Controller
       'password'  => $password,
       'jobtitle'  => $file_input->jobtitle,
     );
-    $result = $this->EmployeeModel->insertEmployee($data);
+    $result = $this->EmployeeModel->insert_employee($data);
     if ($result) {
       echo true;
     } else {
       echo false;
     }
   }
-
 
   public function updateEmployee()
   {
@@ -68,7 +67,7 @@ class EmployeeController extends CI_Controller
       'username' => $file_input->username,
       'jobtitle'  => $file_input->jobtitle,
     );
-    $result = $this->EmployeeModel->updateEmployee($data);
+    $result = $this->EmployeeModel->update_employee($data);
     if ($result) {
       echo true;
     } else {
@@ -79,11 +78,12 @@ class EmployeeController extends CI_Controller
   public function updatePasswordEmp()
   {
     $file_input = json_decode(file_get_contents("php://input"));
+    $password_hash = $this->hashPassword($file_input->password);
     $data = array(
       'id'        => $file_input->id,
-      'password'  => $file_input->password,
+      'password'  => $password_hash,
     );
-    $result = $this->EmployeeModel->updatePasswordEmp($data);
+    $result = $this->EmployeeModel->update_password_emp($data);
     if ($result) {
       echo true;
     } else {
@@ -95,7 +95,7 @@ class EmployeeController extends CI_Controller
   {
     $file_input = json_decode(file_get_contents("php://input"));
     $id = $file_input->id;
-    $result = $this->EmployeeModel->deleteEmployee($id);
+    $result = $this->EmployeeModel->delete_employee_by($id);
     if ($result) {
       echo true;
     } else {

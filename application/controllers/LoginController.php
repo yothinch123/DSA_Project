@@ -26,6 +26,7 @@ class LoginController extends CI_Controller
       $data = $this->EmployeeModel->getEmployeeByCode($result->id);
 
       $sesdata = array(
+        'id'       =>  $data->id,
         'ssn'      =>  $data->ssn,
         'fname'    =>  $data->fname,
         'lname'    =>  $data->lname,

@@ -2,7 +2,7 @@
   <div class="row mb-3">
     <div class="col-xl-12 col-lg-12">
       <div class="card mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #3490de;">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
           <h5 class="m-0 text-white">เพิ่มพนักงาน</h5>
         </div>
         <div class="card-body">
@@ -74,7 +74,7 @@
         </div>
         <div class="card-footer text-right bg-white" style="height: 75px;">
           <button type="submit" ng-click="_insert()" class="btn btn-primary">บันทึก</button>
-          <a href="" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
+          <a href="<?php echo base_url("BaseController/view_employee"); ?>" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
         </div>
         </form>
       </div>

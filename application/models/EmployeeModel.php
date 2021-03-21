@@ -8,22 +8,21 @@ class EmployeeModel extends CI_Model
     parent::__construct();
   }
 
-  function getEmployeeBy()
+  function fetch_employee_By()
   {
     $query = $this->db->get('employee');
     return $query->result();
   }
 
-  function getEmployeeByCode($id)
+  function fetch_employee_by_code($id)
   {
-
     $where_cond = array('id' => $id);
     $query =  $this->db->get_where('employee', $where_cond);
 
     return $query->row();
   }
 
-  function insertEmployee($data)
+  function insert_employee($data)
   {
     $query =  $this->db->insert('employee', $data);
     if ($query) {
@@ -33,14 +32,14 @@ class EmployeeModel extends CI_Model
     }
   }
 
-  function deleteEmployee($id)
+  function delete_employee_by($id)
   {
     $this->db->where('id', $id);
     $this->db->delete('employee');
     return true;
   }
 
-  function updateEmployee($data)
+  function update_employee($data)
   {
     extract($data);
     $sql = "UPDATE employee SET 
@@ -57,12 +56,12 @@ class EmployeeModel extends CI_Model
     return $query;
   }
 
-  function updatePasswordEmp($data)
+  function update_password_emp($data)
   {
     extract($data);
-    
+
     $sql = "UPDATE employee SET 
-    password = '$password', 
+    password = '$password' 
     WHERE id = '$id'
     ";
 

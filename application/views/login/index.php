@@ -1,5 +1,5 @@
 <div class="container" ng-app="loginApp" ng-controller="loginCtrl" style="height: 100vh;width: 100vw;display: grid;">
-  <div class="card" style="margin: auto;width: 70%;">
+  <div class="card" style="margin: auto;width: 70%;border: 1px solid #6777EF">
     <form>
       <div class="card-header text-center pt-5">
         <h4 class="text-dark" style="font-weight: bold;"><img  src="<?= base_url('assets/'); ?>img/boy.png" style="max-width: 60px"> เข้าสู่ระบบเพื่อใช้งานเว็บไซต์</h4>
@@ -20,7 +20,7 @@
         <div class="pt-2 text-center">
           <button style="width: 100%;" type="submit" ng-click="_login()" class="btn btn-primary text-white"> เข้าสู่ระบบ</button>
           <hr>
-          <a style="width: 100%;" href="" class="btn btn-light text-dark"> กลับสู่หน้าหลัก</a>
+          <a style="width: 100%;" href="" class="text-dark"> กลับสู่หน้าหลัก</a>
         </div>
     </form>
   </div>

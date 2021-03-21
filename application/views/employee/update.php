@@ -2,7 +2,7 @@
   <div class="row mb-3">
     <div class="col-xl-12 col-lg-12">
       <div class="card mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #3490de;">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
           <h5 class="m-0 text-white">แก้ไขข้อมูลพนักงาน</h5>
           <button class="btn btn-warning" data-toggle="modal" data-target="#passwordModal"><i class="fas fa-unlock-alt"></i> เปลี่ยนรหัสผ่าน </button>
         </div>
@@ -48,13 +48,6 @@
                       <small id="username" class="form-text text-muted">Example : xxxxxxxx</small>
                     </div>
                   </div>
-                  <!-- <div class="col-3">
-                    <div class="form-group">
-                      <label for="password">รหัสผ่าน <b style="color: #f73859;">*</b> </label>
-                      <input type="password" class="form-control" id="password" ng-model="password" autocomplete="off">
-                      <small id="password" class="form-text text-muted">Example : xxxxxxx</small>
-                    </div>
-                  </div> -->
                   <div class="col-4">
                     <div class="form-group">
                       <label for="jobtitle">ตำแหน่ง <b style="color: #f73859;">*</b> </label>
@@ -74,7 +67,7 @@
         </div>
         <div class="card-footer text-right bg-white" style="height: 75px;">
           <button type="submit" ng-click="_update()" class="btn btn-primary">บันทึก</button>
-          <a href="" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
+          <a href="<?php echo base_url("BaseController/view_employee"); ?>" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
         </div>
         </form>
       </div>
@@ -112,9 +105,8 @@
   app.controller('updateEmployeeCtrl', function($scope, $http) {
 
     $scope._fetchData = function() {
-      var id = "<?php echo $_GET['id'] ?>"
       $http.post("<?php echo base_url("EmployeeController/getEmployeeByCode"); ?>", {
-        'id': id
+        'id': <?php echo $_GET['id'] ?>,
       }).then(function(response) {
         var user = response.data;
         $scope.ssn = user.ssn,
@@ -132,9 +124,12 @@
         'password': $scope.password,
       }).then(function(response) {
         if (response.data === "1") {
+          $scope.password = null;
           Swal.fire({
             title: "อัพเดตรหัสผ่านสำเร็จ !",
             icon: 'success',
+          }).then(() => {
+            $('#passwordModal').modal('hide')
           })
         } else {
           Swal.fire({

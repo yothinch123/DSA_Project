@@ -2,7 +2,7 @@
   <div class="row mb-3">
     <div class="col-xl-12 col-lg-12">
       <div class="card mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #3490de;">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
           <h5 class="m-0 text-white">ตั้งค่า Wi-Fi</h5>
         </div>
         <div class="card-body">
@@ -92,9 +92,8 @@
               </div>
             </div>
         </div>
-        <div class="modal-footer bg-white" style="height: 75px;">
-          <button type="submit" name="insert" class="btn btn-primary">บันทึก</button>
-          <a href="" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
+        <div class="card-footer bg-white text-right" style="height: 75px;">
+          <button type="submit" name="insert" class="btn btn-primary">บันทึก</button> 
         </div>
         </form>
       </div>
