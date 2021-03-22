@@ -34,31 +34,28 @@ class BaseController extends CI_Controller
   
   public function view_employee_insert()
   {
-    $data['title'] = '';
     $this->load->view('_layout/header');
     $this->load->view('_layout/sidebar');
     $this->load->view('_layout/topbar');
-    $this->load->view('employee/insert.php', $data);
+    $this->load->view('employee/insert.php');
     $this->load->view('_layout/footer');
   }
 
   public function view_employee_update()
   {
-    $data['title'] = '';
     $this->load->view('_layout/header');
     $this->load->view('_layout/sidebar');
     $this->load->view('_layout/topbar');
-    $this->load->view('employee/update.php', $data);
+    $this->load->view('employee/update.php');
     $this->load->view('_layout/footer');
   }
 
   public function view_dashboard()
   {
-    $data = '';
     $this->load->view('_layout/header');
     $this->load->view('_layout/sidebar');
     $this->load->view('_layout/topbar');
-    $this->load->view('dashboard/index.php', $data);
+    $this->load->view('dashboard/index.php');
     $this->load->view('_layout/footer');
   }
   public function view_login()
@@ -78,11 +75,10 @@ class BaseController extends CI_Controller
   }
   public function view_statistics()
   {
-    $data = '';
     $this->load->view('_layout/header');
     $this->load->view('_layout/sidebar');
     $this->load->view('_layout/topbar');
-    $this->load->view('statistics/index.php', $data);
+    $this->load->view('statistics/index.php');
     $this->load->view('_layout/footer');
   }
 }

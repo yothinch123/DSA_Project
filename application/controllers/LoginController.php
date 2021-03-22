@@ -19,11 +19,11 @@ class LoginController extends CI_Controller
     $username = $file_input->username;
     $password = $file_input->password;
 
-    $result = $this->LoginModel->checkLoginBy($username);
+    $result = $this->LoginModel->check_login_by($username);
     $password_hash = $result->password;
 
     if (password_verify($password, $password_hash)) {
-      $data = $this->EmployeeModel->getEmployeeByCode($result->id);
+      $data = $this->EmployeeModel->fetch_employee_by_code($result->id);
 
       $sesdata = array(
         'id'       =>  $data->id,
