@@ -44,17 +44,14 @@
               </div>
 
               <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab"><br>
-                <div style="display: flex;justify-content: space-between;">
-                  <h5>สถิติลูกค้าแบบรายสัปดาห์</h5>
-                  <div>
-                    <form method="post" action="<?php echo base_url(); ?>index.php/export_csv/export_week">
+                <div style="height: 65vh; overflow-y: scroll;">
+                  <canvas id="week_chart" style="width: 1300px;height: 500px;"></canvas>
+                  <!-- <form method="post" action="<?php echo base_url(); ?>index.php/export_csv/export_week">
                       <button type="submit" class="btn" style="color: white; background-color: #0ea47a;"><i class="fas fa-sort-amount-down-alt"></i> Excel</button>
-                    </form>
-                  </div>
+                    </form> -->
                 </div>
-
-
               </div>
+
               <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
                   <canvas id="month_chart" style="width: 1300px;height: 500px;"></canvas>
@@ -123,6 +120,7 @@
   app.controller('reportCtrl', function($scope, $http) {
     $scope._fetchData = function() {
       $scope._report_day();
+      $scope._report_week();
       $scope._report_month();
       $scope._report_year();
       $scope._report_old_cust();
@@ -156,6 +154,37 @@
         });
       });
     }
+
+    $scope._report_week = function() {
+      $scope.total_report_week = [];
+      $scope.register_report_week = [];
+
+      $http.post("<?php echo base_url("ReportController/fetchReportByWeek"); ?>").then(function(response) {
+        console.log(response);
+        response.data.map(item => {
+          $scope.total_report_week.push(item.total)
+          $scope.register_report_week.push(item.week_beginning)
+        })
+
+        var ctx = document.getElementById("week_chart").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'horizontalBar',
+          data: {
+            datasets: [{
+              label: 'จำนวนลูกค้า',
+              data: $scope.total_report_week,
+              backgroundColor: "#ca82f8",
+            }],
+            labels: $scope.register_report_week,
+            borderWidth: 1,
+          },
+          options: {
+            responsive: true
+          },
+        });
+      });
+    }
+
 
     $scope._report_month = function() {
       $scope.total_report_month = [];
@@ -229,9 +258,9 @@
         });
       });
     }
-    
+
     $scope._report_old_cust = function() {
-      $scope.total_report_old_cust= [];
+      $scope.total_report_old_cust = [];
       $scope.register_report_old_cust = [];
 
       $http.post("<?php echo base_url("ReportController/fetchReportByoldCust"); ?>").then(function(response) {

@@ -20,7 +20,7 @@ class ReportModel extends CI_Model
 
   public function fetch_report_by_day()
   {
-    $sql = "SELECT COUNT(id) as total, DATE(register_time) AS register_time FROM customer_register GROUP BY day(register_time), month(register_time), year(register_time) ORDER BY `register_time` ASC";
+    $sql = "SELECT COUNT(id) as total, DATE(register_time) AS register_time FROM customer_register GROUP BY day(register_time), month(register_time), year(register_time) ORDER BY register_time ASC";
 
 
     $query = $this->db->query($sql);
@@ -29,7 +29,10 @@ class ReportModel extends CI_Model
 
   public function fetch_report_by_we()
   {
-    $sql = "SELECT COUNT(id) as total, register_time FROM customer_register GROUP BY WEEKOFYEAR(`register_time`)";
+    $sql = "SELECT FROM_DAYS(TO_DAYS(register_time) -MOD(TO_DAYS(register_time) -1, 7)) AS week_beginning, COUNT(id) AS total
+            FROM customer_register
+            GROUP BY FROM_DAYS(TO_DAYS(register_time) -MOD(TO_DAYS(register_time) -1, 7))
+            ORDER BY FROM_DAYS(TO_DAYS(register_time) -MOD(TO_DAYS(register_time) -1, 7))";
 
     $query = $this->db->query($sql);
     return $query->result();
