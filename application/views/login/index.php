@@ -2,7 +2,7 @@
   <div class="card" style="margin: auto;width: 70%;border: 1px solid #6777EF">
     <form>
       <div class="card-header text-center pt-5">
-        <h4 class="text-dark" style="font-weight: bold;"><img  src="<?= base_url('assets/'); ?>img/boy.png" style="max-width: 60px"> เข้าสู่ระบบเพื่อใช้งานเว็บไซต์</h4>
+        <h4 class="text-dark" style="font-weight: bold;"><img src="<?= base_url('assets/'); ?>img/boy.png" style="max-width: 60px"> เข้าสู่ระบบเพื่อใช้งานเว็บไซต์</h4>
       </div>
       <div class="card-body">
         <div class="mb-3 row form-row">
@@ -41,7 +41,7 @@
             showConfirmButton: false,
             timer: 1000
           }).then(function() {
-            location.href = '<?php echo base_url("BaseController/view_employee"); ?>';
+            location.href = '<?php echo base_url("BaseController/view_dashboard"); ?>';
           })
         } else {
           Swal.fire({

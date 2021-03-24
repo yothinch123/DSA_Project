@@ -1,44 +1,34 @@
 <div class="container-fluid" id="container-wrapper" style="margin-top: 90px;" ng-app="updateSettingApp" ng-controller="updateSettingCtrl">
-  <div class="row mb-3">
-    <div class="col-3"></div>
-    <div class="col-6">
-      <div class="col-xl-12 col-lg-12">
-        <div class="card mb-4">
-          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
-            <h5 class="m-0 text-white">ตั้งค่า Wi-Fi</h5>
-          </div>
-          <div class="card-body">
-            <form>
-              <div class="form-group">
-                <label for="ssn">เวลาเปิด WIFI</label>
-                <input type="time" ng-model="wifi_open" class="form-control">
-                <small id="ssn" class="form-text text-muted">Example : 08.00</small>
-              </div>
-
-              <div class="form-group">
-                <label for="ssn">เวลาปิด WIFI</label>
-                <input type="time" ng-model="wifi_close" class="form-control">
-                <small id="ssn" class="form-text text-muted">Example : 16.00</small>
-              </div>
-
-              <div class="form-group">
-                <label for="ssn">ชื่อร้าน</label>
-                <input type="text" ng-model="name_cafe" class="form-control">
-                <small id="ssn" class="form-text text-muted">* มีหรือไม่มีก็ได้</small>
-              </div>
-          </div>
-          <div class="card-footer bg-white text-center" style="height: 75px;">
-            <button type="submit" ng-click="_update()" class="btn btn-warning">บันทึก</button>
-            <button type="reset" class="btn btn-secondary">ยกเลิก</button>
-          </div>
-          </form>
-        </div>
-      </div>
+  <div class="card mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
+      <h5 class="m-0 text-white">ตั้งค่า Wi-Fi</h5>
     </div>
-    <div class="col-3"></div>
-  </div>
-</div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="ssn">เวลาเปิด WIFI</label>
+          <input type="time" ng-model="wifi_open" class="form-control">
+          <small id="ssn" class="form-text text-muted">Example : 08.00</small>
+        </div>
 
+        <div class="form-group">
+          <label for="ssn">เวลาปิด WIFI</label>
+          <input type="time" ng-model="wifi_close" class="form-control">
+          <small id="ssn" class="form-text text-muted">Example : 16.00</small>
+        </div>
+
+        <div class="form-group">
+          <label for="ssn">ชื่อร้าน</label>
+          <input type="text" ng-model="name_cafe" class="form-control">
+          <small id="ssn" class="form-text text-muted">* มีหรือไม่มีก็ได้</small>
+        </div>
+    </div>
+    <div class="card-footer bg-white text-center" style="height: 75px;">
+      <button type="submit" ng-click="_update()" class="btn btn-warning">บันทึก</button>
+      <button type="reset" class="btn btn-secondary">ยกเลิก</button>
+    </div>
+    </form>
+  </div>
 </div>
 
 <script>

@@ -27,4 +27,24 @@ class SettingModel extends CI_Model
       return false;
     }
   }
+
+  function insert_setting_log($data)
+  {
+    extract($data);
+
+    $sql = "INSERT INTO log_setting (
+        username_emp,
+        login_time,
+        details,
+        login_from
+        ) VALUES (
+        '$username_emp', 
+        now(),
+        'ตั้งเวลา WiFi',
+        '$ip'
+        )";
+
+    $query = $this->db->query($sql);
+    return $query;
+  }
 }
