@@ -14,6 +14,12 @@ class BaseController extends CI_Controller
   {
     $this->view_login();
   }
+
+  public function loading()
+  {
+    $this->load->view('_layout/loading');
+  }
+
   public function view_employee()
   {
     $this->load->view('_layout/header');
@@ -22,16 +28,17 @@ class BaseController extends CI_Controller
     $this->load->view('employee/view.php');
     $this->load->view('_layout/footer');
   }
-  
+
   public function view_user()
   {
     $this->load->view('_layout/header');
     $this->load->view('_layout/sidebar');
+    $this->load->view('_layout/loading');
     $this->load->view('_layout/topbar');
     $this->load->view('user/index.php');
     $this->load->view('_layout/footer');
   }
-  
+
   public function view_employee_insert()
   {
     $this->load->view('_layout/header');
@@ -61,9 +68,8 @@ class BaseController extends CI_Controller
   public function view_login()
   {
     $this->load->view('_layout/header');
-    $this->load->view('login/index.php');    
+    $this->load->view('login/index.php');
     $this->load->view('_layout/footer');
-
   }
   public function view_wifi_setting()
   {

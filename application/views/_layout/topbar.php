@@ -5,7 +5,7 @@
       <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
         <i class="fa fa-bars"></i>
       </button>
-      <span class="text-white">ระบบบริหารจัดการร้านกาแฟ</span>
+      <span class="text-white">ร้านกาแฟของวิศวคอมพิวเตอร์</span>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,7 +31,7 @@
             <span class="ml-2 d-none d-lg-inline text-white small"><?php echo $this->session->userdata('fname'), ' ', $this->session->userdata('lname')  ?></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item" onclick="window.location.href='/CPE/BaseController/view_user'" >
+            <a class="dropdown-item" onclick="window.location.href='/CPE/BaseController/view_user'">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               ข้อมูลส่วนต้ว
             </a>

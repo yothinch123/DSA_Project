@@ -27,5 +27,5 @@
     }
 </style>
 
-<body id="page-top">
+<body id="page-top">  
     <div id="wrapper">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2021 at 10:13 AM
+-- Generation Time: Mar 24, 2021 at 12:39 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -363,12 +363,24 @@ INSERT INTO `employee_jobtitle` (`id`, `name_jobtitle`) VALUES
 --
 
 CREATE TABLE `employee_login` (
-  `id` int(11) NOT NULL,
+  `id` varchar(35) NOT NULL,
   `username_emp` varchar(64) DEFAULT NULL,
-  `login_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `login_time` datetime NOT NULL,
   `logout_time` datetime DEFAULT NULL,
   `details` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `employee_login`
+--
+
+INSERT INTO `employee_login` (`id`, `username_emp`, `login_time`, `logout_time`, `details`) VALUES
+('33jrm3p7jamab76774gkft48tefj998h', 'yothin', '2021-03-24 14:43:32', '2021-03-24 14:46:55', ''),
+('d4jsm6vjoh63s28kjk17krrcm8mgimf2', 'jeerawat', '2021-03-24 15:00:06', '0000-00-00 00:00:00', ''),
+('ds6ucpun84bsko3ebubimrd7oel12qlr', 'yothin', '2021-03-24 15:10:34', '0000-00-00 00:00:00', ''),
+('lo3v96siqdep1k8qu22cs208nd562gc8', 'yothin', '2021-03-24 14:42:30', '2021-03-24 14:43:20', ''),
+('p1fnkp0mqv2o15cov2ah3r1gh7hnb38b', 'siriwiriya', '2021-03-24 14:49:47', '2021-03-24 14:54:18', ''),
+('sftm33edb15753cgvtaj7h6kaet0sci1', 'chaitawat', '2021-03-24 14:47:08', '2021-03-24 14:47:34', '');
 
 -- --------------------------------------------------------
 
@@ -466,17 +478,17 @@ CREATE TABLE `radreply` (
 CREATE TABLE `setting` (
   `id` int(11) NOT NULL,
   `attribute` varchar(100) DEFAULT NULL,
-  `values` varchar(100) DEFAULT NULL
+  `details` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `setting`
 --
 
-INSERT INTO `setting` (`id`, `attribute`, `values`) VALUES
-(1, 'name_cafe', 'CPE_Cafe'),
-(2, 'wifi_open', '08.00'),
-(3, 'wifi_close', '16.00');
+INSERT INTO `setting` (`id`, `attribute`, `details`) VALUES
+(1, 'name_cafe', 'sadasd'),
+(2, 'wifi_open', '1970-01-01T11:36:00.000Z'),
+(3, 'wifi_close', '1970-01-01T11:40:00.000Z');
 
 --
 -- Indexes for dumped tables
@@ -567,19 +579,13 @@ ALTER TABLE `customer_register`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `employee_jobtitle`
 --
 ALTER TABLE `employee_jobtitle`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `employee_login`
---
-ALTER TABLE `employee_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `log_setting`

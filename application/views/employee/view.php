@@ -2,7 +2,7 @@
    <div class="row mb-3">
      <div class="col-xl-12 col-lg-12">
        <div class="card mb-4">
-         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary" >
+         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
            <h5 class="m-0 text-white">ข้อมูลพนักงาน</h5>
            <button class="btn btn-success" onclick="window.location.href='/CPE/BaseController/view_employee_insert'">เพิ่มพนักงาน <i class="fas fa-user-plus"></i></button>
          </div>
@@ -10,7 +10,7 @@
            <div class="col-lg-12">
              <div class="table-responsive p-3">
                <table class="table table-hover table-borderless" id="TableEmployee" ng-init="_fetchData()">
-                 <thead style="border-bottom: 1px solid #5f6769;">
+                 <thead style="background-color: grey;color: white;">
                    <tr>
                      <th>ลำดับ</th>
                      <th>ชื่อ</th>
@@ -35,10 +35,10 @@
                        <button id={{employee.id}} class="btn btn-danger btn-sm" ng-click="_deleteID(employee.id)" value='Delete'><i class="fas fa-trash"></i></button>
                      </td>
                      <td>
-                       <button class="btn btn-link btn-sm text-dark">ประวัติการเข้าสู่ระบบ</button>
+                       <button class="btn btn-link btn-sm text-dark" data-toggle="modal" data-target="#logFileModal">ประวัติการเข้าสู่ระบบ</button>
                      </td>
                    </tr>
-                 </tbody> 
+                 </tbody>
                </table>
              </div>
            </div>
@@ -46,6 +46,25 @@
        </div>
      </div>
 
+   </div>
+
+
+   <div class="modal fade" id="logFileModal" tabindex="-1" role="dialog" aria-labelledby="logFileLabel" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 style="font-weight: bold;" class="modal-title text-dark" id="logFileLabel">ประวัติการเข้าสู่ระบบของ <?= $this->session->userdata('fname') ?></h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body"> 
+         this is Login History
+         </div>
+         <div class="modal-footer"> 
+         </div>
+       </div>
+     </div>
    </div>
 
    <script>

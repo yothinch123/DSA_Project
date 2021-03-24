@@ -10,7 +10,7 @@ class LoginController extends CI_Controller
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('LoginModel');
-    $this->load->model('EmployeeModel'); 
+    $this->load->model('EmployeeModel');
   }
 
   public function check_login()
@@ -25,6 +25,7 @@ class LoginController extends CI_Controller
     if (password_verify($password, $password_hash)) {
       $data = $this->EmployeeModel->fetch_employee_by_code($result->id);
 
+      $this->createLoginLog($data->username);
       $sesdata = array(
         'id'       =>  $data->id,
         'ssn'      =>  $data->ssn,
@@ -35,14 +36,30 @@ class LoginController extends CI_Controller
         'jobtitle' =>  $data->jobtitle,
       );
       $this->session->set_userdata($sesdata);
-
       echo true;
     } else {
       echo false;
     }
   }
+
+  public function createLoginLog($username)
+  {
+    $data = array(
+      'id' => session_id(),
+      'username_emp' => $username,
+    );
+    $this->LoginModel->insert_login_log($data);
+  }
+
+  public function updateLoginLog()
+  {
+    $username = $this->session->userdata('username');
+    $this->LoginModel->update_login_log($username);
+  }
+
   public function logout()
   {
+    $this->updateLoginLog();
     $this->session->sess_destroy();
     echo true;
   }
