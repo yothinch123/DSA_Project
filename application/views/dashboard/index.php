@@ -1,4 +1,4 @@
-<div class="container-fluid" id="container-wrapper" style="margin-top: 90px;">
+<div class="container-fluid" id="container-wrapper" style="margin-top: 90px;" ng-app="dashboardApp">
   <div class="row mb-3">
     <div class="col-xl-3 col-md-6 mb-4">
       <div class="card h-100">
@@ -81,8 +81,8 @@
     </div>
 
     <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7">
-      <div class="card mb-4">
+    <div class="col-xl-8 col-lg-7" ng-controller="reportCtrl" ng-init="_fetchData()">
+      <div class="card mb-4" style="height: 700px;">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">สถิติลูกค้าของวันนี้</h6>
           <div class="dropdown no-arrow">
@@ -100,178 +100,74 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="myAreaChart"></canvas>
+            <canvas id="day_chart" style="width: 500px;height: 100%"></canvas>
           </div>
         </div>
       </div>
     </div>
     <!-- Pie Chart -->
     <div class="col-xl-4 col-lg-5">
-      <div class="card mb-4">
+      <div class="card mb-4" style="height: 500px;">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">ปฏิทิน</h6>
-          <div class="dropdown no-arrow">
-            <a class="dropdown-toggle btn btn-primary btn-sm" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Month <i class="fas fa-chevron-down"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-              <div class="dropdown-header">Select Periode</div>
-              <a class="dropdown-item" href="#">Today</a>
-              <a class="dropdown-item" href="#">Week</a>
-              <a class="dropdown-item active" href="#">Month</a>
-              <a class="dropdown-item" href="#">This Year</a>
-            </div>
-          </div>
         </div>
         <div class="card-body">
-          <div class="mb-3">
-            <div class="small text-gray-500">Oblong T-Shirt
-              <div class="small float-right"><b>600 of 800 Items</b></div>
-            </div>
-            <div class="progress" style="height: 12px;">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="small text-gray-500">Gundam 90'Editions
-              <div class="small float-right"><b>500 of 800 Items</b></div>
-            </div>
-            <div class="progress" style="height: 12px;">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="small text-gray-500">Rounded Hat
-              <div class="small float-right"><b>455 of 800 Items</b></div>
-            </div>
-            <div class="progress" style="height: 12px;">
-              <div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="small text-gray-500">Indomie Goreng
-              <div class="small float-right"><b>400 of 800 Items</b></div>
-            </div>
-            <div class="progress" style="height: 12px;">
-              <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="small text-gray-500">Remote Control Car Racing
-              <div class="small float-right"><b>200 of 800 Items</b></div>
-            </div>
-            <div class="progress" style="height: 12px;">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer text-center">
-          <a class="m-0 small text-primary card-link" href="#">View More <i class="fas fa-chevron-right"></i></a>
+          <div id='calendar'></div> 
         </div>
       </div>
-    </div>
-    <!-- Invoice Example -->
-    <div class="col-xl-8 col-lg-7 mb-4">
-      <div class="card">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Invoice</h6>
-          <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i class="fas fa-chevron-right"></i></a>
-        </div>
-        <div class="table-responsive">
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Item</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><a href="#">RA0449</a></td>
-                <td>Udin Wayang</td>
-                <td>Nasi Padang</td>
-                <td><span class="badge badge-success">Delivered</span></td>
-                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-              </tr>
-              <tr>
-                <td><a href="#">RA5324</a></td>
-                <td>Jaenab Bajigur</td>
-                <td>Gundam 90' Edition</td>
-                <td><span class="badge badge-warning">Shipping</span></td>
-                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-              </tr>
-              <tr>
-                <td><a href="#">RA8568</a></td>
-                <td>Rivat Mahesa</td>
-                <td>Oblong T-Shirt</td>
-                <td><span class="badge badge-danger">Pending</span></td>
-                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-              </tr>
-              <tr>
-                <td><a href="#">RA1453</a></td>
-                <td>Indri Junanda</td>
-                <td>Hat Rounded</td>
-                <td><span class="badge badge-info">Processing</span></td>
-                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-              </tr>
-              <tr>
-                <td><a href="#">RA1998</a></td>
-                <td>Udin Cilok</td>
-                <td>Baby Powder</td>
-                <td><span class="badge badge-success">Delivered</span></td>
-                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card-footer"></div>
-      </div>
-    </div>
-    <!-- Message From Customer-->
-    <div class="col-xl-4 col-lg-5 ">
-      <div class="card">
-        <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-light">Message From Customer</h6>
-        </div>
-        <div>
-          <div class="customer-message align-items-center">
-            <a class="font-weight-bold" href="#">
-              <div class="text-truncate message-title">Hi there! I am wondering if you can help me with a
-                problem I've been having.</div>
-              <div class="small text-gray-500 message-time font-weight-bold">Udin Cilok · 58m</div>
-            </a>
-          </div>
-          <div class="customer-message align-items-center">
-            <a href="#">
-              <div class="text-truncate message-title">But I must explain to you how all this mistaken idea
-              </div>
-              <div class="small text-gray-500 message-time">Nana Haminah · 58m</div>
-            </a>
-          </div>
-          <div class="customer-message align-items-center">
-            <a class="font-weight-bold" href="#">
-              <div class="text-truncate message-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </div>
-              <div class="small text-gray-500 message-time font-weight-bold">Jajang Cincau · 25m</div>
-            </a>
-          </div>
-          <div class="customer-message align-items-center">
-            <a class="font-weight-bold" href="#">
-              <div class="text-truncate message-title">At vero eos et accusamus et iusto odio dignissimos
-                ducimus qui blanditiis
-              </div>
-              <div class="small text-gray-500 message-time font-weight-bold">Udin Wayang · 54m</div>
-            </a>
-          </div>
-          <div class="card-footer text-center">
-            <a class="m-0 small text-primary card-link" href="#">View More <i class="fas fa-chevron-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
+    </div> 
+
   </div>
 
 </div>
+
+
+<script>
+  var app = angular.module('dashboardApp', []);
+
+  app.controller('reportCtrl', function($scope, $http) {
+    $scope._fetchData = function() {
+      $scope._report_today();
+    }
+
+    $scope._report_today = function() {
+      $scope.total_customer_now = [];
+      $scope.all_times = [];
+
+      $http.post("<?php echo base_url("ReportController/fetchReportByoldCust"); ?>").then(function(response) {
+        response.data.map(item => {
+          $scope.total_customer_now.push(item.total)
+        })
+        for (let time = 0; time < 24; time++) {
+          time > 9 ?
+            $scope.all_times.push(time.toString() + ".00 น.") :
+            $scope.all_times.push("0" + time.toString() + ".00 น.")
+        }
+        var ctx = document.getElementById("day_chart").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'horizontalBar',
+          data: {
+            datasets: [{
+              label: 'จำนวนลูกค้า',
+              data: $scope.total_customer_now,
+              backgroundColor: "#ca82f8",
+            }],
+            labels: $scope.all_times,
+            borderWidth: 1,
+          },
+          options: {
+            responsive: true
+          },
+        });
+      });
+    }
+  })
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
+</script>

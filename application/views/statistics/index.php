@@ -64,8 +64,9 @@
 
               <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab"><br>
                 <div>
+                  <button style="float: right;" class="btn btn-success" ng-click="_export_csv('year')"><i class="fas fa-file-export"></i> ส่งออก</button>
                   <canvas id="year_chart" style="width: 1300px;height: 500px;"></canvas>
-                  <!-- <form method="post" action="<?php echo base_url(); ?>index.php/export_csv/export_year">
+                  <!-- <form method="post" action="<?php echo base_url(); ?>BaseController/report">
                     <button type="submit" class="btn" style="color: white; background-color: #0ea47a;"><i class="fas fa-sort-amount-down-alt"></i> Excel</button>
                   </form> -->
                 </div>
@@ -118,6 +119,7 @@
   var app = angular.module('reportApp', []);
 
   app.controller('reportCtrl', function($scope, $http) {
+
     $scope._fetchData = function() {
       $scope._report_day();
       $scope._report_week();
@@ -160,7 +162,6 @@
       $scope.register_report_week = [];
 
       $http.post("<?php echo base_url("ReportController/fetchReportByWeek"); ?>").then(function(response) {
-        console.log(response);
         response.data.map(item => {
           $scope.total_report_week.push(item.total)
           $scope.register_report_week.push(item.week_beginning)
@@ -288,6 +289,25 @@
       });
     }
 
+    $scope._export_csv = function(type) {
+      if (type === "year") {
+        $scope.total_report_year = [];
+        $scope.register_report_year = [];
+
+        $http.post("<?php echo base_url("ReportController/fetchReportByYear"); ?>").then(function(response) {
+          response.data.map(item => {
+            $scope.total_report_year.push(item.total)
+            $scope.register_report_year.push(item.register_time)
+          })
+          $http.post("<?php echo base_url("ReportController/exportCSV"); ?>", {
+            'totals': $scope.total_report_year,
+            'times': $scope.register_report_year,
+          }).then(function() {
+            location.href = '<?php echo base_url("ReportController/exportCSV"); ?>';
+          })
+        })
+      }
+    }
   })
 
   function select_view(e) {

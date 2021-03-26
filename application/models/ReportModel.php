@@ -9,10 +9,9 @@ class ReportModel extends CI_Model
   }
 
 
-  public function fetch_report()
+  public function fetch_report_by_hour()
   {
-    $sql = "SELECT `register_time` FROM customer_register GROUP BY `register_time` ORDER BY `register_time` ASC";
-    // $sql = "SELECT COUNT(id) as total, `register_time` FROM customer_register GROUP BY `register_time` ORDER BY `register_time` ASC";
+    $sql = "SELECT `register_time` FROM customer_register GROUP BY hour(register_time)";
 
     $query = $this->db->query($sql);
     return $query->result();

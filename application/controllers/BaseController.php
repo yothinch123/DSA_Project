@@ -8,7 +8,7 @@ class BaseController extends CI_Controller
     parent::__construct();
     $this->load->database();
     $this->load->model('EmployeeModel');
-    $this->load->helper('url');
+    // $this->load->helper('url');
   }
   public function index()
   {
@@ -87,4 +87,10 @@ class BaseController extends CI_Controller
     $this->load->view('statistics/index.php');
     $this->load->view('_layout/footer');
   }
+  
+  public function Export()
+  {
+    $this->load->view('statistics/report.php');
+  }
+
 }
