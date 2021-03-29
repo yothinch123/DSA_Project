@@ -32,12 +32,12 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
             <a class="dropdown-item" onclick="window.location.href='/CPE/BaseController/view_user'">
-              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              <i class="fas fa-user fa-sm fa-fw mr-2"></i>
               ข้อมูลส่วนต้ว
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" onclick="_logout()">
-              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
               ออกจากระบบ
             </a>
           </div>

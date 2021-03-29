@@ -9,7 +9,7 @@
          <div class="card-body" ng-app="myApp" ng-controller="employeeCtrl">
            <div class="col-lg-12">
              <div class="table-responsive p-3">
-               <table class="table table-hover table-borderless" id="TableEmployee" ng-init="_fetchData()">
+               <table class="table table-hover text-center" id="TableEmployee" ng-init="_fetchData()">
                  <thead style="background-color: grey;color: white;">
                    <tr>
                      <th>ลำดับ</th>
@@ -48,7 +48,6 @@
 
    </div>
 
-
    <div class="modal fade" id="logFileModal" tabindex="-1" role="dialog" aria-labelledby="logFileLabel" aria-hidden="true">
      <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
        <div class="modal-content">
@@ -58,10 +57,10 @@
              <span aria-hidden="true">&times;</span>
            </button>
          </div>
-         <div class="modal-body"> 
-         this is Login History
+         <div class="modal-body">
+           this is Login History
          </div>
-         <div class="modal-footer"> 
+         <div class="modal-footer">
          </div>
        </div>
      </div>
@@ -77,20 +76,30 @@
            });
        }
        $scope._deleteID = function(id) {
-         $http.post("<?php echo base_url("EmployeeController/deleteEmployee"); ?>", {
-           'id': id,
-         }).then(function(response) {
-           if (response) {
-             Swal.fire({
-               title: "ลบพนักงานสำเร็จ !",
-               icon: 'success',
-             }).then(function() {
-               $scope._fetchData();
-             })
-           } else {
-             Swal.fire({
-               title: "เกิดข้อผิดพลาดในการลบข้อมูล !",
-               icon: 'error',
+         Swal.fire({
+           title: 'คุณต้องการลบพนักงานคนนี้ ?',
+           icon: 'warning',
+           showCancelButton: true,
+           confirmButtonText: 'ตกลง',
+           cancelButtonText: 'ยกเลิก',
+         }).then((result) => {
+           if (result.isConfirmed) {
+             $http.post("<?php echo base_url("EmployeeController/deleteEmployee"); ?>", {
+               'id': id,
+             }).then(function(response) {
+               if (response) {
+                 Swal.fire({
+                   title: "ลบพนักงานสำเร็จ !",
+                   icon: 'success',
+                 }).then(function() {
+                   $scope._fetchData();
+                 })
+               } else {
+                 Swal.fire({
+                   title: "เกิดข้อผิดพลาดในการลบข้อมูล !",
+                   icon: 'error',
+                 })
+               }
              })
            }
          })

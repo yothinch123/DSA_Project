@@ -1,5 +1,5 @@
 <div class="container-fluid" id="container-wrapper" style="margin-top: 90px;" ng-app="updateSettingApp" ng-controller="updateSettingCtrl">
-  <div class="card mb-4">
+  <div class="card mb-4" style="width: 50%;display: grid;margin: auto;">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
       <h5 class="m-0 text-white">ตั้งค่า Wi-Fi</h5>
     </div>

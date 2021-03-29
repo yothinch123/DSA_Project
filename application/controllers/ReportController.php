@@ -81,6 +81,22 @@ class ReportController extends CI_Controller
     }
   }
 
+  public function fetchReportByCustom()
+  {
+    $file_input = json_decode(file_get_contents("php://input"));
+    $data = array(
+      'date_start'  =>  $file_input->date_start,
+      'date_end' => $file_input->date_end,
+    );
+    $result = $this->ReportModel->fetch_report_by_custom($data);
+
+    if ($result) {
+      echo json_encode($result);
+    } else {
+      return false;
+    }
+  }
+
   public function exportCSV($array)
   {
     // if (count($array) == 0) {
@@ -116,10 +132,14 @@ class ReportController extends CI_Controller
 
   public function test()
   {
-    $this->export_headers("data_export_" . date("Y-m-d") . ".csv");
-    $data = $this->ReportModel->fetch_report_by_year();
+    if (isset($_GET['type'])) {
+      $this->export_headers("data_export_" . date("Y-m-d") . ".csv");
+      $data = $this->ReportModel->fetch_report_by_year();
 
-    $this->exportCSV($data);
-    die();
+      $this->exportCSV($data);
+      die();
+    } else {
+      echo "haha false !";
+    }
   }
 }

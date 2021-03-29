@@ -7,14 +7,14 @@
         </div>
         <div class="card-body" ng-app="reportApp" ng-controller="reportCtrl" ng-init="_fetchData()">
           <div style="width: 30%;float: right;" id="select">
-            <select class="custom-select" onchange="select_view(this)">
-              <option value="customer">สถิติจำนวนของลูกค้า</option>
-              <option value="old_customer">สถิติลูกค้าเดิม</option>
-              <option value="statistics_time_use">สถิติเรื่องเวลาการใช้งานต่อคนต่อช่วงเวลา / วัน</option>
+            <select class="custom-select" style="cursor: pointer;" onchange="select_view(this)">
+              <option value="stat_customer">กราฟแสดงจำนวนของลูกค้า</option>
+              <option value="stat_old_customer">กราฟแสดงข้อมูลของลูกค้าเดิม</option>
+              <option value="stat_custom">กราฟแสดงข้อมูลแบบกำหนดวัน</option>
             </select>
           </div>
 
-          <div class="pt-5" id="customer" style="display: block">
+          <div class="pt-5" id="stat_customer" style="display: block">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="day-tab" data-toggle="tab" href="#day" role="tab" aria-controls="day" aria-selected="true">วัน</a>
@@ -32,87 +32,66 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab"><br>
                 <div style="height: 69vh; overflow-y: scroll;">
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> Excel <i class="fas fa-file-export"></i></button>
                   <canvas id="day_chart" style="width: 1300px;height: 1500px;"></canvas>
-
-                  <!-- <form method="post" action="<?php echo base_url(); ?>index.php/excel_export">
-                      <input type="submit" name="export" class="btn btn-success" value="Exportss" />
-                    </form>
-                    <form method="post" action="<?php echo base_url(); ?>index.php/export_csv/export_day">
-                      <button type="submit" class="btn" style="color: white; background-color: #0ea47a;"><i class="fas fa-sort-amount-down-alt"></i> Excel</button>
-                    </form> -->
                 </div>
               </div>
 
               <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> Excel <i class="fas fa-file-export"></i></button>
                   <canvas id="week_chart" style="width: 1300px;height: 500px;"></canvas>
-                  <!-- <form method="post" action="<?php echo base_url(); ?>index.php/export_csv/export_week">
-                      <button type="submit" class="btn" style="color: white; background-color: #0ea47a;"><i class="fas fa-sort-amount-down-alt"></i> Excel</button>
-                    </form> -->
                 </div>
               </div>
 
               <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> Excel <i class="fas fa-file-export"></i></button>
                   <canvas id="month_chart" style="width: 1300px;height: 500px;"></canvas>
-                  <!-- <form method="post" action="<?php echo base_url(); ?>index.php/export_csv/export_month">
-                      <button type="submit" class="btn" style="color: white; background-color: #0ea47a;"><i class="fas fa-sort-amount-down-alt"></i> Excel</button>
-                    </form> -->
                 </div>
               </div>
-
 
               <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab"><br>
                 <div>
-                  <button style="float: right;" class="btn btn-success" ng-click="_export_csv('year')"><i class="fas fa-file-export"></i> ส่งออก</button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> Excel <i class="fas fa-file-export"></i></button>
                   <canvas id="year_chart" style="width: 1300px;height: 500px;"></canvas>
-                  <!-- <form method="post" action="<?php echo base_url(); ?>BaseController/report">
-                    <button type="submit" class="btn" style="color: white; background-color: #0ea47a;"><i class="fas fa-sort-amount-down-alt"></i> Excel</button>
-                  </form> -->
                 </div>
               </div>
-
             </div>
           </div>
-          <div id="old_customer" style="display: none">
-            <div>
+
+          <div id="stat_old_customer" style="display: none;" class="pt-5">
+            <div style="border-bottom: 1px solid #c9d6df;height: 60px;">
+              <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> Excel <i class="fas fa-file-export"></i></button>
+            </div>
+            <div class="pt-3">
               <canvas id="old_cust_chart" style="width: 1300px;height: 500px;"></canvas>
-              <!-- <form method="post" action="<?php echo base_url(); ?>index.php/export_csv/export_old">
-                  <button type="submit" class="btn" style="color: white; background-color: #0ea47a;"><i class="fas fa-sort-amount-down-alt"></i> Excel</button>
-                </form> -->
             </div>
           </div>
-          <!-- <div class="statistics_time_use page">
-            <h5 id="h5">สถิติเรื่องเวลาการใช้งานต่อคนต่อช่วงเวลา / วัน</h5>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="day2-tab" data-toggle="tab" href="#day2" role="tab" aria-controls="day2" aria-selected="true">วัน</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="weekend2-tab" data-toggle="tab" href="#weekend2" role="tab" aria-controls="weekend2" aria-selected="false">สัปดาห์</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="month2-tab" data-toggle="tab" href="#month2" role="tab" aria-controls="month2" aria-selected="false">เดือน</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="year2-tab" data-toggle="tab" href="#year2" role="tab" aria-controls="year2" aria-selected="false">ปี</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="day2" role="tabpanel" aria-labelledby="day2-tab"><br> สวัสดีครับ นี่คือสถิติรายวัน.</div>
-              <div class="tab-pane fade" id="weekend2" role="tabpanel" aria-labelledby="weekend2-tab"><br> สวัสดีครับ นี่คือสถิติรายสัปดาห์.</div>
-              <div class="tab-pane fade" id="month2" role="tabpanel" aria-labelledby="month2-tab"><br> สวัสดีครับ นี่คือสถิติรายเดือน</div>
-              <div class="tab-pane fade" id="year2" role="tabpanel" aria-labelledby="year2-tab"><br> สวัสดีครับ นี่คือสถิติรายปี</div>
+
+          <div id="stat_custom" style="display: none;" class="pt-5">
+            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv('custom')"> Excel <i class="fas fa-file-export"></i></button>
+            <div style="border-bottom: 1px solid #c9d6df; padding: 20px 20px 20px 20px;">
+              <div style="display: flex;">
+                <div>
+                  <Label>จากวันที่</Label>
+                  <input class="btn btn-outline-warning ml-2" ng-model="date_start" type="date">
+                </div>
+                <div class="pl-3">
+                  <Label>ถึงวันที่</Label>
+                  <input class="btn btn-outline-warning ml-2" ng-model="date_end" type="date">
+                </div>
+                <button class="btn btn-primary ml-3" ng-click="_search_custom()"><i class="fas fa-search"></i> ค้นหา</button>
+              </div>
             </div>
-          </div> -->
-
-
+            <div style="height: 69vh; overflow-y: scroll;">
+              <canvas id="custom_chart" style="width: 1300px;height: 1500px;"></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
 </div>
 
 <script>
@@ -221,7 +200,6 @@
           }
         });
       });
-
     }
 
     $scope._report_year = function() {
@@ -289,37 +267,76 @@
       });
     }
 
-    $scope._export_csv = function(type) {
-      if (type === "year") {
-        $scope.total_report_year = [];
-        $scope.register_report_year = [];
+    $scope._search_custom = function() {
+      $scope.total_report_custom = [];
+      $scope.register_report_custom = [];
 
-        $http.post("<?php echo base_url("ReportController/fetchReportByYear"); ?>").then(function(response) {
-          response.data.map(item => {
-            $scope.total_report_year.push(item.total)
-            $scope.register_report_year.push(item.register_time)
-          })
-          $http.post("<?php echo base_url("ReportController/exportCSV"); ?>", {
-            'totals': $scope.total_report_year,
-            'times': $scope.register_report_year,
-          }).then(function() {
-            location.href = '<?php echo base_url("ReportController/exportCSV"); ?>';
-          })
+      if ($scope.date_start == undefined || $scope.date_end == undefined) {
+        Swal.fire({
+          title: 'กรุณาเลือกวันที่ให้ครบ !',
+          icon: 'warning',
         })
+      } else {
+        $http.post("<?php echo base_url("ReportController/fetchReportByCustom"); ?>", {
+          'date_start': $scope.date_start.toISOString().slice(0, 10),
+          'date_end': $scope.date_end.toISOString().slice(0, 10),
+        }).then(function(response) {
+          if (!response.data) {
+            Swal.fire({
+              title: 'ไม่พบข้อมูล !',
+              icon: 'error',
+            }).then(function() {
+              $scope._fetchData()
+            })
+          } else {
+            response.data.map(item => {
+              $scope.total_report_custom.push(item.total)
+              $scope.register_report_custom.push(item.register_time)
+            })
+            var ctx = document.getElementById("custom_chart").getContext('2d');
+            var myChart = new Chart(ctx, {
+              type: 'horizontalBar',
+              data: {
+                datasets: [{
+                  label: 'จำนวนลูกค้า',
+                  data: $scope.total_report_custom,
+                  backgroundColor: "#ca82f8",
+                }],
+                labels: $scope.register_report_custom,
+                borderWidth: 1,
+              },
+              options: {
+                responsive: true
+              },
+            });
+          }
+        });
       }
+    }
+
+    $scope._export_csv = function(type) {
+      location.href = "<?php echo base_url('ReportController/test?') ?>" + "type=" + type;
     }
   })
 
   function select_view(e) {
     var select = e.value;
 
-    if (select === "customer") {
-      document.getElementById('customer').style.display = "block";
-      document.getElementById('old_customer').style.display = "none";
+    if (select === "stat_customer") {
+      document.getElementById('stat_customer').style.display = "block";
+      document.getElementById('stat_old_customer').style.display = "none";
+      document.getElementById('stat_custom').style.display = "none";
 
-    } else if (select === "old_customer") {
-      document.getElementById('customer').style.display = "none";
-      document.getElementById('old_customer').style.display = "block";
+    } else if (select === "stat_old_customer") {
+      document.getElementById('stat_customer').style.display = "none";
+      document.getElementById('stat_old_customer').style.display = "block";
+      document.getElementById('stat_custom').style.display = "none";
+
+    } else if (select === "stat_custom") {
+      document.getElementById('stat_customer').style.display = "none";
+      document.getElementById('stat_old_customer').style.display = "none";
+      document.getElementById('stat_custom').style.display = "block";
+
     }
   }
 </script>

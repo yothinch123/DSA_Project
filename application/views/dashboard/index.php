@@ -8,12 +8,12 @@
               <div class="text-xs font-weight-bold text-uppercase mb-1">จำนวนลูกค้าทีใช้งานวันนี้</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">35</div>
               <div class="mt-2 mb-0 text-muted text-xs">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span>Since last month</span>
+                <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span>Since last month</span> -->
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-primary"></i>
+              <i class="fas fa-wifi fa-2x text-primary"></i>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
+              <div class="text-xs font-weight-bold text-uppercase mb-1">จำนวนลูกค้าทั้งหมด</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
               <div class="mt-2 mb-0 text-muted text-xs">
                 <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
@@ -45,8 +45,8 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
-              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+              <div class="text-xs font-weight-bold text-uppercase mb-1">ชื่อไวไฟ</div>
+              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">CPE-Cafe</div>
               <div class="mt-2 mb-0 text-muted text-xs">
                 <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
                 <span>Since last month</span>
@@ -65,8 +65,8 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+              <div class="text-xs font-weight-bold text-uppercase mb-1">ระยะเวลาการให้บริการไวไฟ</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">3 ชม</div>
               <div class="mt-2 mb-0 text-muted text-xs">
                 <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
                 <span>Since yesterday</span>
@@ -107,15 +107,23 @@
     </div>
     <!-- Pie Chart -->
     <div class="col-xl-4 col-lg-5">
-      <div class="card mb-4" style="height: 500px;">
+      <div class="card" style="height: 180px;">
+        <div class="card-header">
+          <h6 class="m-0 font-weight-bold text-primary">รายละเอียด</h6>
+        </div>
+        <div class="card-body">
+        </div>
+      </div>
+
+      <div class="card mb-4 mt-3" style="height: 500px;">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">ปฏิทิน</h6>
         </div>
         <div class="card-body">
-          <div id='calendar'></div> 
+          <div id='calendar'></div>
         </div>
       </div>
-    </div> 
+    </div>
 
   </div>
 
@@ -134,7 +142,7 @@
       $scope.total_customer_now = [];
       $scope.all_times = [];
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByoldCust"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("ReportController/fetchReportByDay"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_customer_now.push(item.total)
         })
