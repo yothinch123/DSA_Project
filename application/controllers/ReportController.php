@@ -39,7 +39,7 @@ class ReportController extends CI_Controller
 
   public function fetchReportByWeek()
   {
-    $result = $this->ReportModel->fetch_report_by_we();
+    $result = $this->ReportModel->fetch_report_by_week();
 
     if ($result) {
       echo json_encode($result);
@@ -50,7 +50,7 @@ class ReportController extends CI_Controller
 
   public function fetchReportByMonth()
   {
-    $result = $this->ReportModel->fetch_report_by_mo();
+    $result = $this->ReportModel->fetch_report_by_month();
 
     if ($result) {
       echo json_encode($result);
@@ -97,15 +97,15 @@ class ReportController extends CI_Controller
     }
   }
 
-  public function exportCSV($array)
+  public function export_CSV($data)
   {
-    // if (count($array) == 0) {
-    //   return null;
-    // }
+    if (count($data) == 0) {
+      return null;
+    }
     ob_start();
     $df = fopen("php://output", 'w');
-    fputcsv($df, array_keys(reset($array)));
-    foreach ($array as $row) {
+    fputcsv($df, array_keys(reset($data)));
+    foreach ($data as $row) {
       fputcsv($df, $row);
     }
     fclose($df);
@@ -130,16 +130,34 @@ class ReportController extends CI_Controller
     header("Content-Transfer-Encoding: binary");
   }
 
-  public function test()
+  public function export_data()
   {
     if (isset($_GET['type'])) {
-      $this->export_headers("data_export_" . date("Y-m-d") . ".csv");
-      $data = $this->ReportModel->fetch_report_by_year();
+      switch ($_GET['type']) {
+        case "day":
+          $this->export_headers("ข้อมูลลูกค้ารายวัน.csv");
+          $data = $this->ReportModel->fetch_report_by_day();
+          break;
+        case "week";
+          $this->export_headers("ข้อมูลลูกค้ารายสัปดาห์.csv");
+          $data = $this->ReportModel->fetch_report_by_week();
+          break;
+        case "month";
+          $this->export_headers("ข้อมูลลูกค้ารายเดือน.csv");
+          $data = $this->ReportModel->fetch_report_by_month();
+          break;
+        case "year";
+          $this->export_headers("ข้อมูลลูกค้ารายปี.csv");
+          $data = $this->ReportModel->fetch_report_by_year();
+          break;
+        case "old_cust";
+          $this->export_headers("ข้อมูลลูกค้าที่กลับมาใช้ซ้ำ.csv");
+          $data = $this->ReportModel->fetch_report_by_old_cust();
+          break;
 
-      $this->exportCSV($data);
-      die();
-    } else {
-      echo "haha false !";
+          $this->export_CSV($data);
+          die();
+      }
     }
   }
 }

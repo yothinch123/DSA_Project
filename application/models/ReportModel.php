@@ -31,7 +31,7 @@ class ReportModel extends CI_Model
     return $query->result();
   }
 
-  public function fetch_report_by_we()
+  public function fetch_report_by_week()
   {
     $sql = "SELECT FROM_DAYS(TO_DAYS(register_time) -MOD(TO_DAYS(register_time) -1, 7)) AS week_beginning, COUNT(id) AS total
     FROM customer_register
@@ -43,7 +43,7 @@ class ReportModel extends CI_Model
     return $query->result();
   }
 
-  public function fetch_report_by_mo()
+  public function fetch_report_by_month()
   {
     $sql = "SELECT COUNT(id) as total , CONCAT(year(register_time),'-', LPAD(month(register_time),2,'0')) AS register_time 
     FROM customer_register 

@@ -88,34 +88,64 @@
 
   app.controller('insertEmployeeCtrl', function($scope, $http) {
     $scope._insert = function() {
-      $http.post("<?php echo base_url("EmployeeController/insertEmployee"); ?>", {
-        'ssn': $scope.ssn,
-        'fname': $scope.fname,
-        'lname': $scope.lname,
-        'username': $scope.username,
-        'password': $scope.password,
-        'phone': $scope.phone,
-        'jobtitle': $scope.jobtitle,
-      }).then(function(response) {
-        if (response.data === "1") {
-          Swal.fire({
-            title: "เพิ่มพนักงานสำเร็จ !",
-            icon: 'success',
-          }).then(function() {
-            location.href = '<?php echo base_url("BaseController/view_employee"); ?>';
-          })
-        } else {
+      if ($scope._check()) {
+        $http.post("<?php echo base_url("EmployeeController/insertEmployee"); ?>", {
+          'ssn': $scope.ssn,
+          'fname': $scope.fname,
+          'lname': $scope.lname,
+          'username': $scope.username,
+          'password': $scope.password,
+          'phone': $scope.phone,
+          'jobtitle': $scope.jobtitle,
+        }).then(function(response) {
+          if (response.data === "1") {
+            Swal.fire({
+              title: "เพิ่มพนักงานสำเร็จ !",
+              icon: 'success',
+            }).then(function() {
+              location.href = '<?php echo base_url("BaseController/view_employee"); ?>';
+            })
+          } else {
+            Swal.fire({
+              title: "เกิดข้อผิดพลาดในการเพิ่มข้อมูล !",
+              icon: 'error',
+            })
+          }
+        }, function(response) {
           Swal.fire({
             title: "เกิดข้อผิดพลาดในการเพิ่มข้อมูล !",
             icon: 'error',
           })
-        }
-      }, function(response) {
-        Swal.fire({
-          title: "เกิดข้อผิดพลาดในการเพิ่มข้อมูล !",
-          icon: 'error',
         })
-      })
+      }
     }
+
+    $scope._check = function() {
+      if ($scope.ssn == undefined || $scope.ssn == '' || $scope.ssn.length !== 13) {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่รหัสบัตรประชาชนให้ครบ 13 หลัก', 'warning')
+        return false
+      } else if ($scope.fname == undefined || $scope.fname == '') {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่ชื่อ', 'warning')
+        return false
+      } else if ($scope.lname == undefined || $scope.lname == '') {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่นามสกุล', 'warning')
+        return false
+      } else if ($scope.username == undefined || $scope.username == '') {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่ชื่อผู้ใช้', 'warning')
+        return false
+      } else if ($scope.password == undefined || $scope.password == '') {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่รหัสผ่าน', 'warning')
+        return false
+      } else if ($scope.phone == undefined || $scope.phone == '' || $scope.ssn.length !== 10) {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่เบอร์มือถือ 10 หลัก', 'warning')
+        return false
+      } else if ($scope.jobtitle == undefined || $scope.jobtitle == '') {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่ตำแหน่ง', 'warning')
+        return false
+      } else {
+        return true
+      }
+    }
+
   })
 </script>

@@ -77,7 +77,7 @@
        }
        $scope._deleteID = function(id) {
          Swal.fire({
-           title: 'คุณต้องการลบพนักงานคนนี้ ?',
+           title: 'คุณต้องการลบข้อมูลพนักงานคนนี้ ?',
            icon: 'warning',
            showCancelButton: true,
            confirmButtonText: 'ตกลง',
@@ -89,7 +89,7 @@
              }).then(function(response) {
                if (response) {
                  Swal.fire({
-                   title: "ลบพนักงานสำเร็จ !",
+                   title: "ลบข้อมูลสำเร็จ !",
                    icon: 'success',
                  }).then(function() {
                    $scope._fetchData();

@@ -10,7 +10,7 @@
           </div>
           <div class="card-body text-left">
             <div class="d-flex justify-content-between">
-              <div class="text-center col-4" style="display: grid;border: 1px solid #6777EF;">
+              <div class="text-center col-4" style="display: grid;border: 1px solid grey;">
                 <img src="<?= base_url('assets/'); ?>img/boy.png" style="width: 60%;height: 60%;margin: auto;">
               </div>
               <div class="col-8 pl-5">

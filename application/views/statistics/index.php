@@ -15,7 +15,7 @@
           </div>
 
           <div class="pt-5" id="stat_customer" style="display: block">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs" id="myTab" style="display: flex;justify-content: center;" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="day-tab" data-toggle="tab" href="#day" role="tab" aria-controls="day" aria-selected="true">วัน</a>
               </li>
@@ -72,16 +72,15 @@
           <div id="stat_custom" style="display: none;" class="pt-5">
             <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv('custom')"> Excel <i class="fas fa-file-export"></i></button>
             <div style="border-bottom: 1px solid #c9d6df; padding: 20px 20px 20px 20px;">
-              <div style="display: flex;">
+              <div style="display: flex;justify-content:center">
+                <div></div>
                 <div>
                   <Label>จากวันที่</Label>
-                  <input class="btn btn-outline-warning ml-2" ng-model="date_start" type="date">
+                  <input class="btn btn-outline-dark ml-2" ng-model="date_start" type="date">
+                  <Label class="ml-2">ถึงวันที่</Label>
+                  <input class="btn btn-outline-dark ml-2" ng-model="date_end" type="date">
+                  <button class="btn btn-primary ml-3" ng-click="_search_custom()"><i class="fas fa-search"></i> ค้นหา</button>
                 </div>
-                <div class="pl-3">
-                  <Label>ถึงวันที่</Label>
-                  <input class="btn btn-outline-warning ml-2" ng-model="date_end" type="date">
-                </div>
-                <button class="btn btn-primary ml-3" ng-click="_search_custom()"><i class="fas fa-search"></i> ค้นหา</button>
               </div>
             </div>
             <div style="height: 69vh; overflow-y: scroll;">
@@ -164,7 +163,6 @@
         });
       });
     }
-
 
     $scope._report_month = function() {
       $scope.total_report_month = [];
@@ -283,7 +281,7 @@
         }).then(function(response) {
           if (!response.data) {
             Swal.fire({
-              title: 'ไม่พบข้อมูล !',
+              title: 'ขออภัย ไม่พบข้อมูล !',
               icon: 'error',
             }).then(function() {
               $scope._fetchData()
@@ -315,7 +313,7 @@
     }
 
     $scope._export_csv = function(type) {
-      location.href = "<?php echo base_url('ReportController/test?') ?>" + "type=" + type;
+      location.href = "<?php echo base_url('ReportController/export_data?') ?>" + "type=" + type;
     }
   })
 

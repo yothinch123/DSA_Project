@@ -15,13 +15,13 @@
   <li class="nav-item">
     <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_wifi_setting'" style="color: #222831;">
       <i class="fas fa-edit"></i>
-      <span>จัดการการใช้งานไวฟาย</span>
+      <span>จัดการใช้งานไวฟาย</span>
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_statistics'" style="color: #222831;">
       <i class="fas fa-edit"></i>
-      <span>จัดการสถิติข้อมูล</span>
+      <span>จัดการรายงานสถิติ</span>
     </a>
   </li>
   <li class="nav-item">
