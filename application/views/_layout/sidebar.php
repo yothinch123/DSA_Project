@@ -24,12 +24,14 @@
       <span>จัดการรายงานสถิติ</span>
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_employee'" style="color: #222831;">
-      <i class="fas fa-edit"></i>
-      <span>จัดการผู้ใช้งานระบบ</span>
-    </a>
-  </li>
+  <?php if ($this->session->userdata('jobtitle') == "เจ้าของร้าน") { ?>
+    <li class="nav-item">
+      <a class="nav-link" onclick="window.location.href='/CPE/BaseController/view_employee'" style="color: #222831;">
+        <i class="fas fa-edit"></i>
+        <span>จัดการผู้ใช้งานระบบ</span>
+      </a>
+    </li>
+  <?php } ?>
   <hr class="sidebar-divider">
   <div class="sidebar-heading">
     USER
@@ -45,7 +47,7 @@
       <i class="fas fa-sign-out-alt"></i>
       <span>ออกจากระบบ</span>
     </a>
-  </li> 
+  </li>
 </ul>
 <style>
   li {

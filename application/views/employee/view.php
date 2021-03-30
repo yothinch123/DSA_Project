@@ -69,15 +69,17 @@
    <script>
      var app = angular.module('myApp', []);
      app.controller('employeeCtrl', function($scope, $http) {
+
        $scope._fetchData = function() {
          $http.post("<?php echo base_url("EmployeeController/getEmployeeBy"); ?>").then(
            function(response) {
              $scope.employees = response.data;
            });
        }
+
        $scope._deleteID = function(id) {
          Swal.fire({
-           title: 'คุณต้องการลบข้อมูลพนักงานคนนี้ ?',
+           title: 'คุณต้องการลบข้อมูลพนักงาน ?',
            icon: 'warning',
            showCancelButton: true,
            confirmButtonText: 'ตกลง',
