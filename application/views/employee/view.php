@@ -1,3 +1,4 @@
+ <?php $this->load->view('_layout/loading'); ?>
  <div class="container-fluid" id="container-wrapper" style="margin-top: 90px;">
    <div class="row mb-3">
      <div class="col-xl-12 col-lg-12">
@@ -94,7 +95,7 @@
            });
        }
 
-       $scope._showLogin = function(username,name) {
+       $scope._showLogin = function(username, name) {
          $http.post("<?php echo base_url("EmployeeController/getEmployeeLoginByCode"); ?>", {
            'username': username,
          }).then(function(response) {

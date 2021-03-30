@@ -32,28 +32,28 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab"><br>
                 <div style="height: 69vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> Excel <i class="fas fa-file-export"></i></button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> Excel <i class="fas fa-file-csv"></i></button>
                   <canvas id="day_chart" style="width: 1300px;height: 1500px;"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> Excel <i class="fas fa-file-export"></i></button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> Excel <i class="fas fa-file-csv"></i></button>
                   <canvas id="week_chart" style="width: 1300px;height: 500px;"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> Excel <i class="fas fa-file-export"></i></button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> Excel <i class="fas fa-file-csv"></i></button>
                   <canvas id="month_chart" style="width: 1300px;height: 500px;"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab"><br>
                 <div>
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> Excel <i class="fas fa-file-export"></i></button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> Excel <i class="fas fa-file-csv"></i></button>
                   <canvas id="year_chart" style="width: 1300px;height: 500px;"></canvas>
                 </div>
               </div>
@@ -62,7 +62,7 @@
 
           <div id="stat_old_customer" style="display: none;" class="pt-5">
             <div style="border-bottom: 1px solid #c9d6df;height: 60px;">
-              <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> Excel <i class="fas fa-file-export"></i></button>
+              <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> Excel <i class="fas fa-file-csv"></i></button>
             </div>
             <div class="pt-3">
               <canvas id="old_cust_chart" style="width: 1300px;height: 500px;"></canvas>
@@ -70,7 +70,7 @@
           </div>
 
           <div id="stat_custom" style="display: none;" class="pt-5">
-            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv_custom()"> Excel <i class="fas fa-file-export"></i></button>
+            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv_custom()"> Excel <i class="fas fa-file-csv"></i></button>
             <div style="border-bottom: 1px solid #c9d6df; padding: 20px 20px 20px 20px;">
               <div style="display: flex;justify-content:center">
                 <div></div>
