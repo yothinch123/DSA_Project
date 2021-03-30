@@ -70,7 +70,7 @@
           </div>
 
           <div id="stat_custom" style="display: none;" class="pt-5">
-            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv('custom')"> Excel <i class="fas fa-file-export"></i></button>
+            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv_custom()"> Excel <i class="fas fa-file-export"></i></button>
             <div style="border-bottom: 1px solid #c9d6df; padding: 20px 20px 20px 20px;">
               <div style="display: flex;justify-content:center">
                 <div></div>
@@ -314,6 +314,12 @@
 
     $scope._export_csv = function(type) {
       location.href = "<?php echo base_url('ReportController/export_data?') ?>" + "type=" + type;
+    }
+
+    $scope._export_csv_custom = function() {
+      $scope.d_start = $scope.date_start.toISOString().slice(0, 10),
+        $scope.d_end = $scope.date_end.toISOString().slice(0, 10),
+        location.href = "<?php echo base_url('ReportController/export_data_custom?') ?>" + "date_start=" + $scope.d_start + "&date_end=" + $scope.d_end;
     }
   })
 

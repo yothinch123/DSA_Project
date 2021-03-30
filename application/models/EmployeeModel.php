@@ -22,6 +22,17 @@ class EmployeeModel extends CI_Model
     return $query->row();
   }
 
+  function fetch_employee_login_by_code($username)
+  {
+    $sql = "SELECT *
+    FROM employee_login 
+    WHERE username_emp = '$username'
+    ";
+
+    $query = $this->db->query($sql);
+    return $query->result();
+  }
+
   function insert_employee($data)
   {
     $query =  $this->db->insert('employee', $data);

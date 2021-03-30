@@ -34,6 +34,18 @@ class EmployeeController extends CI_Controller
     }
   }
 
+  public function getEmployeeLoginByCode()
+  {
+    $file_input = json_decode(file_get_contents("php://input"));
+    $username = $file_input->username;
+    $result = $this->EmployeeModel->fetch_employee_login_by_code($username);
+    if ($result) {
+      echo json_encode($result);
+    } else {
+      echo false;
+    }
+  }
+
   public function insertEmployee()
   {
     $file_input = json_decode(file_get_contents("php://input"));
