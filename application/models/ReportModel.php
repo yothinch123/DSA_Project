@@ -10,13 +10,12 @@ class ReportModel extends CI_Model
 
   public function fetch_report_by_hour()
   {
-    $sql = "SELECT register_time
-    FROM customer_register 
-    GROUP BY hour(register_time)
+    $sql = "SELECT total
+    FROM tbl_hour
     ";
 
     $query = $this->db->query($sql);
-    return $query->result();
+    return $query->result_array();
   }
 
   public function fetch_report_by_day()
@@ -28,7 +27,7 @@ class ReportModel extends CI_Model
     ";
 
     $query = $this->db->query($sql);
-    return $query->result();
+    return $query->result_array();
   }
 
   public function fetch_report_by_week()
@@ -40,7 +39,7 @@ class ReportModel extends CI_Model
     ";
 
     $query = $this->db->query($sql);
-    return $query->result();
+    return $query->result_array();
   }
 
   public function fetch_report_by_month()
@@ -52,7 +51,7 @@ class ReportModel extends CI_Model
     ";
 
     $query = $this->db->query($sql);
-    return $query->result();
+    return $query->result_array();
   }
 
   public function fetch_report_by_year()
@@ -64,7 +63,7 @@ class ReportModel extends CI_Model
     ";
 
     $query = $this->db->query($sql);
-    return $query->result();
+    return $query->result_array();
   }
 
   public function fetch_report_by_old_cust()
@@ -75,7 +74,7 @@ class ReportModel extends CI_Model
     ";
 
     $query = $this->db->query($sql);
-    return $query->result();
+    return $query->result_array();
   }
 
   public function fetch_report_by_custom($data)
@@ -89,7 +88,7 @@ class ReportModel extends CI_Model
     ";
 
     $query = $this->db->query($sql);
-    return $query->result();
+    return $query->result_array();
   }
   
   public function fetch_report_total_by()
@@ -100,7 +99,7 @@ class ReportModel extends CI_Model
     ";
 
     $query = $this->db->query($sql);
-    return $query->result();
+    return $query->result_array();
   }
 
 }

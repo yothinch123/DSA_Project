@@ -107,58 +107,37 @@ class ReportController extends CI_Controller
       return false;
     }
   }
-  public function export_CSV()
+  public function export_CSV($data)
   {
-    // foreach($data as $value){
-    //   echo $value->total;
-    //   echo "&nbsp;";
-    //   echo "&nbsp;";
-    //   echo "&nbsp;";
-    //   echo "&nbsp;";
-    //   echo $value->register_time;
-    //   echo "<br>";
-    // }
-    // header('Content-Type: text/csv; charset=utf-8');
-    // header('Content-Disposition: attachment; filename=data.csv');
-    // $output = fopen("php://output", "w");
+    $handle = fopen('php://output', 'w');
+    ob_clean();
 
-    $filename = 'users_' . date('Ymd') . '.csv';
-    // header("Content-Description: File Transfer");
-    header("Content-Disposition: attachment; filename=$filename");
-    header("Content-Type: application/csv; ");
-
-    // get data 
-    $usersData = $this->fetchReportByWeek();
-    $data = json_decode($usersData, true);
-
-    // file creation 
-    $file = fopen('php://output', 'w');
-
-    $header = array("Username", "Name", "Gender", "Email");
-    fputcsv($file, $header);
-    foreach ($data as $key => $line) {
-      fputcsv($file, $line);
+    foreach ($data as $row) {
+      fputcsv($handle, $row);
     }
-    fclose($file);
-    exit;
+
+    ob_flush();
+    fclose($handle);
+    die();
   }
 
   public function export_headers($filename)
   {
     // disable caching
-    // $now = gmdate("D, d M Y H:i:s");
-    // header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
-    // header("Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate");
-    // header("Last-Modified: {$now} GMT");
+    $now = gmdate("D, d M Y H:i:s");
+    header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
+    header("Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate");
+    header('Content-Type: text/csv; charset=utf-8');
+    header("Last-Modified: {$now} GMT");
 
-    // // force download  
-    // header("Content-Type: application/force-download");
-    // header("Content-Type: application/octet-stream");
-    // header("Content-Type: application/download");
+    // force download  
+    header("Content-Type: application/force-download");
+    header("Content-Type: application/octet-stream");
+    header("Content-Type: application/download");
 
-    // // disposition / encoding on response body
-    // header("Content-Disposition: attachment;filename={$filename}");
-    // header("Content-Transfer-Encoding: binary");
+    // disposition / encoding on response body
+    header("Content-Disposition: attachment;filename={$filename}");
+    header("Content-Transfer-Encoding: binary");
   }
 
   public function export_data()
@@ -185,10 +164,10 @@ class ReportController extends CI_Controller
           $this->export_headers("ข้อมูลลูกค้าที่กลับมาใช้ซ้ำ.csv");
           $data = $this->ReportModel->fetch_report_by_old_cust();
           break;
-
-          $this->export_CSV($data);
-          die();
       }
+
+      $this->export_CSV($data);
+      die();
     }
   }
 

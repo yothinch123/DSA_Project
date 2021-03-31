@@ -142,7 +142,7 @@
       $scope.total_customer_now = [];
       $scope.all_times = [];
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByDay"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("ReportController/fetchReportByHour"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_customer_now.push(item.total)
         })
