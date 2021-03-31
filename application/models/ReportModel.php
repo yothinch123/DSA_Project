@@ -91,4 +91,16 @@ class ReportModel extends CI_Model
     $query = $this->db->query($sql);
     return $query->result();
   }
+  
+  public function fetch_report_total_by()
+  {
+    $sql = "SELECT COUNT(id) as total
+    FROM customer_register 
+    GROUP BY hour(register_time)
+    ";
+
+    $query = $this->db->query($sql);
+    return $query->result();
+  }
+
 }

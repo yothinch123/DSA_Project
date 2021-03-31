@@ -97,6 +97,16 @@ class ReportController extends CI_Controller
     }
   }
 
+  public function fetchReportTotalBy()
+  {
+    $result = $this->ReportModel->fetch_report_total_by();
+
+    if ($result) {
+      echo json_encode($result);
+    } else {
+      return false;
+    }
+  }
   public function export_CSV()
   {
     // foreach($data as $value){

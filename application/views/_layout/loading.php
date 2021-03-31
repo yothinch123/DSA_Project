@@ -1,151 +1,131 @@
- <div id="box">
-   <div id="loading">
-     <div class="dot white"></div>
-     <div class="dot"></div>
-     <div class="dot"></div>
-     <div class="dot"></div>
-     <div class="dot"></div>
-   </div>
- </div>
+<div id="box">
+  <div class="sk-chase">
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+  </div>
+</div>
 
- <script type="text/javascript">
-   setTimeout(function() {
-     $(`#box`).remove();
-   }, 500)
- </script>
+<script type="text/javascript">
+  setTimeout(function() {
+    $(`#box`).remove();
+  }, 350)
+</script>
 
- <style>
-   body {
-     background: white; 
-   }
-   #box {
-     width: 100%;
-     height: 100%;
-   }
+<style>
+  body {
+    background: white; 
+    position: relative;
+  }
 
-   #loading { 
-     position: absolute;
-     margin: auto;
-     top: 0;
-     bottom: 0;
-     left: 0;
-     right: 0;
-     width: 6.250em;
-    height: 6.250em;
-     animation: rotate 2.4s linear infinite;
-     z-index: 1;
-   }
+  #box {
+    width: 100%;
+    height: 100%;
+  }
 
-   .white {
-     top: 0;
-     bottom: 0;
-     left: 0;
-     right: 0;
-     background: white;
-     animation: flash 2.4s linear infinite;
-     opacity: 0;
-   }
+  .sk-chase {
+    width: 100px;
+    height: 100px;
+    /* position: relative; */
+    position: absolute;
+    top: 45%;
+    left: 50%; 
+    margin: 0;
+    animation: sk-chase 2.5s infinite linear both;
+  }
 
-   .dot {
-     position: absolute;
-     margin: auto;
-     width: 2.4em;
-     height: 2.4em;
-     border-radius: 100%;
-     transition: all 1s ease;
-   }
+  .sk-chase-dot {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: sk-chase-dot 2.0s infinite ease-in-out both;
+  }
 
-   .dot:nth-child(2) {
-     top: 0;
-     bottom: 0;
-     left: 0;
-     background: #FF4444;
-     animation: dotsY 2.4s linear infinite;
-   }
+  .sk-chase-dot:before {
+    content: '';
+    display: block;
+    width: 25%;
+    height: 25%;
+    background-color: #6777EF;
+    border-radius: 100%;
+    animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
+  }
 
-   .dot:nth-child(3) {
-     left: 0;
-     right: 0;
-     top: 0;
-     background: #FFBB33;
-     animation: dotsX 2.4s linear infinite;
-   }
+  .sk-chase-dot:nth-child(1) {
+    animation-delay: -1.1s;
+  }
 
-   .dot:nth-child(4) {
-     top: 0;
-     bottom: 0;
-     right: 0;
-     background: #99CC00;
-     animation: dotsY 2.4s linear infinite;
-   }
+  .sk-chase-dot:nth-child(2) {
+    animation-delay: -1.0s;
+  }
 
-   .dot:nth-child(5) {
-     left: 0;
-     right: 0;
-     bottom: 0;
-     background: #33B5E5;
-     animation: dotsX 2.4s linear infinite;
-   }
+  .sk-chase-dot:nth-child(3) {
+    animation-delay: -0.9s;
+  }
 
-   @keyframes rotate {
-     0% {
-       transform: rotate(0);
-     }
+  .sk-chase-dot:nth-child(4) {
+    animation-delay: -0.8s;
+  }
 
-     10% {
-       width: 6.250em;
-       height: 6.250em;
-     }
+  .sk-chase-dot:nth-child(5) {
+    animation-delay: -0.7s;
+  }
 
-     66% {
-       width: 2.4em;
-       height: 2.4em;
-     }
+  .sk-chase-dot:nth-child(6) {
+    animation-delay: -0.6s;
+  }
 
-     100% {
-       transform: rotate(360deg);
-       width: 6.250em;
-       height: 6.250em;
-     }
-   }
+  .sk-chase-dot:nth-child(1):before {
+    animation-delay: -1.1s;
+  }
 
-   @keyframes dotsY {
-     66% {
-       opacity: .1;
-       width: 2.4em;
-     }
+  .sk-chase-dot:nth-child(2):before {
+    animation-delay: -1.0s;
+  }
 
-     77% {
-       opacity: 1;
-       width: 0;
-     }
-   }
+  .sk-chase-dot:nth-child(3):before {
+    animation-delay: -0.9s;
+  }
 
-   @keyframes dotsX {
-     66% {
-       opacity: .1;
-       height: 2.4em;
-     }
+  .sk-chase-dot:nth-child(4):before {
+    animation-delay: -0.8s;
+  }
 
-     77% {
-       opacity: 1;
-       height: 0;
-     }
-   }
+  .sk-chase-dot:nth-child(5):before {
+    animation-delay: -0.7s;
+  }
 
-   @keyframes flash {
-     33% {
-       opacity: 0;
-       border-radius: 0%;
-     }
+  .sk-chase-dot:nth-child(6):before {
+    animation-delay: -0.6s;
+  }
 
-     55% {
-       opacity: .6;
-       border-radius: 100%;
-     }
+  @keyframes sk-chase {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-     66% {
-       opacity: 0;
-     }
-   }
- </style>
+  @keyframes sk-chase-dot {
+
+    80%,
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes sk-chase-dot-before {
+    50% {
+      transform: scale(0.4);
+    }
+
+    100%,
+    0% {
+      transform: scale(1.0);
+    }
+  }
+</style>

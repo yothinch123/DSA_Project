@@ -1,4 +1,4 @@
-<div class="container-fluid" id="container-wrapper" style="margin-top: 90px;" ng-app="dashboardApp">
+<div class="container-fluid" id="container-wrapper" style="margin-top: 90px;" ng-app="dashboardApp" ng-controller="reportCtrl" ng-init="_fetchData()">
   <div class="row mb-3">
     <div class="col-xl-3 col-md-6 mb-4">
       <div class="card h-100">
@@ -6,7 +6,7 @@
           <div class="row align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-uppercase mb-1">จำนวนลูกค้าทีใช้งานวันนี้</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">35</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">35 คน</div>
               <div class="mt-2 mb-0 text-muted text-xs">
                 <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
                 <span>Since last month</span> -->
@@ -26,7 +26,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-uppercase mb-1">จำนวนลูกค้าทั้งหมด</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_customer }} คน </div>
               <div class="mt-2 mb-0 text-muted text-xs">
                 <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
                 <span>Since last years</span>
@@ -81,7 +81,7 @@
     </div>
 
     <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7" ng-controller="reportCtrl" ng-init="_fetchData()">
+    <div class="col-xl-8 col-lg-7">
       <div class="card mb-4" style="height: 700px;">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">กราฟแสดงจำนวนลูกค้าของวันนี้</h6>
@@ -168,7 +168,12 @@
           },
         });
       });
+
+      $http.post("<?php echo base_url("ReportController/fetchReportByoldCust"); ?>").then(function(response) {
+        $scope.total_customer = response.data.length
+      });
     }
+
   })
 
   document.addEventListener('DOMContentLoaded', function() {
