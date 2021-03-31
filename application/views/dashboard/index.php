@@ -82,7 +82,7 @@
 
     <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
-      <div class="card mb-4" style="height: 700px;">
+      <div class="card mb-4" style="height: 750px;">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">กราฟแสดงจำนวนลูกค้าของวันนี้</h6>
           <div class="dropdown no-arrow">
@@ -100,14 +100,14 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="day_chart" style="width: 500px;height: 100%"></canvas>
+            <canvas id="day_chart" style="width: 500px;height:290px"></canvas>
           </div>
         </div>
       </div>
     </div>
     <!-- Pie Chart -->
     <div class="col-xl-4 col-lg-5">
-      <div class="card" style="height: 180px;">
+      <div class="card" style="height:200px;">
         <div class="card-header">
           <h6 class="m-0 font-weight-bold text-primary">รายละเอียด</h6>
         </div>
@@ -115,7 +115,7 @@
         </div>
       </div>
 
-      <div class="card mb-4 mt-3" style="height: 500px;">
+      <div class="card mb-4 mt-3" style="height: 520px;">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">ปฏิทิน</h6>
         </div>

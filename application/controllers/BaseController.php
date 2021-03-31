@@ -12,7 +12,11 @@ class BaseController extends CI_Controller
   }
   public function index()
   {
-    $this->view_login();
+    $this->load->view('_layout/header');
+    $this->load->view('_layout/topbar');
+    $this->load->view('_layout/loading');
+    $this->load->view('dashboard/index.php');
+    $this->load->view('_layout/footer');
   }
 
   public function loading()
@@ -22,7 +26,7 @@ class BaseController extends CI_Controller
 
   public function view_employee()
   {
-    if ($this->session->userdata('username')) { 
+    if ($this->session->userdata('username')) {
       $this->load->view('_layout/header');
       $this->load->view('_layout/sidebar');
       $this->load->view('_layout/topbar');

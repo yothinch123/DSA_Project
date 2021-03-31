@@ -33,28 +33,28 @@
               <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab"><br>
                 <div style="height: 69vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> Excel </i></button>
-                  <canvas id="day_chart" style="width: 1300px;height: 1500px;"></canvas>
+                  <canvas id="day_chart" width="400" height="400"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> Excel </i></button>
-                  <canvas id="week_chart" style="width: 1300px;height: 500px;"></canvas>
+                  <canvas id="week_chart" width="400" height="400"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> Excel </i></button>
-                  <canvas id="month_chart" style="width: 1300px;height: 500px;"></canvas>
+                  <canvas id="month_chart" width="400" height="400"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab"><br>
-                <div>
+                <div style="height: 65vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> Excel </i></button>
-                  <canvas id="year_chart" style="width: 1300px;height: 500px;"></canvas>
+                  <canvas id="year_chart" width="400" height="400"></canvas>
                 </div>
               </div>
             </div>
@@ -64,8 +64,8 @@
             <div style="border-bottom: 1px solid #c9d6df;height: 60px;">
               <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> Excel </i></button>
             </div>
-            <div class="pt-3">
-              <canvas id="old_cust_chart" style="width: 1300px;height: 500px;"></canvas>
+            <div class="pt-3" style="height: 65vh; overflow-y: scroll;">
+              <canvas id="old_cust_chart" width="400" height="400"></canvas>
             </div>
           </div>
 
@@ -84,7 +84,7 @@
               </div>
             </div>
             <div style="height: 69vh; overflow-y: scroll;">
-              <canvas id="custom_chart" style="width: 1300px;height: 1500px;"></canvas>
+              <canvas id="custom_chart" width="400" height="400"></canvas>
             </div>
           </div>
         </div>
@@ -212,7 +212,7 @@
 
         var ctx = document.getElementById("year_chart").getContext('2d');
         var myChart = new Chart(ctx, {
-          type: 'bar',
+          type: 'horizontalBar',
           data: {
             datasets: [{
               label: 'จำนวนลูกค้า',

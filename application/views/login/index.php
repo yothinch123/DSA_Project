@@ -18,9 +18,9 @@
           </div>
         </div>
         <div class="pt-2 text-center">
-          <button style="width: 100%;" type="submit" ng-click="_login()" class="btn btn-primary text-white"> เข้าสู่ระบบ</button>
+          <button style="width: 100%;" type="submit" ng-click="_check_login()" class="btn btn-primary text-white"> เข้าสู่ระบบ</button>
           <hr>
-          <a style="width: 100%;" href="" class="text-dark"> กลับสู่หน้าหลัก</a>
+          <a style="width: 100%;" href="<?php echo base_url("BaseController") ?>" class="text-dark"> กลับสู่หน้าหลัก</a>
         </div>
     </form>
   </div>
@@ -29,7 +29,7 @@
   var app = angular.module('loginApp', []);
 
   app.controller('loginCtrl', function($scope, $http) {
-    $scope._login = function() {
+    $scope._check_login = function() {
       $http.post("<?php echo base_url("LoginController/check_login"); ?>", {
         'username': $scope.username,
         'password': $scope.password,
