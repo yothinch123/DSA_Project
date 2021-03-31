@@ -100,7 +100,7 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="day_chart" style="width: 500px;height:290px"></canvas>
+            <canvas id="day_chart" style="width: 500px;height:310px"></canvas>
           </div>
         </div>
       </div>
