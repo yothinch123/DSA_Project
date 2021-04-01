@@ -2,7 +2,7 @@
   <div id="content">
     <!-- TopBar -->
     <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top  fixed-top" style="background-color: #005792;">
-      <?php if ($this->session->userdata('username')) { ?> ?>
+      <?php if ($this->session->userdata('username')) { ?>
         <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
           <i class="fa fa-bars"></i>
         </button>
