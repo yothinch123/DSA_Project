@@ -142,7 +142,7 @@
       $scope.total_customer_now = [];
       $scope.all_times = [];
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByHour"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Report/fetchReportByHour"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_customer_now.push(item.total)
         })
@@ -169,7 +169,7 @@
         });
       });
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByoldCust"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Report/fetchReportByoldCust"); ?>").then(function(response) {
         $scope.total_customer = response.data.length
       });
     }

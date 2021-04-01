@@ -35,7 +35,7 @@
               <span class="ml-2 d-none d-lg-inline text-white small"><?php echo $this->session->userdata('fname'), ' ', $this->session->userdata('lname')  ?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <a class="dropdown-item" onclick="window.location.href='/CPE/BaseController/view_user'">
+              <a class="dropdown-item" onclick="window.location.href='/CPE/Base/view_user'">
                 <i class="fas fa-user fa-sm fa-fw mr-2"></i>
                 ข้อมูลส่วนต้ว
               </a>
@@ -67,7 +67,7 @@
         }).then((result) => {
           if (result.isConfirmed) {
             $.ajax({
-              url: "<?php echo base_url("/LoginController/logout"); ?>",
+              url: "<?php echo base_url("/Login/logout"); ?>",
               success: function(respone) {
                 if (respone) {
                   Swal.fire({
@@ -76,7 +76,7 @@
                     showConfirmButton: false,
                     timer: 1000
                   }).then(() => {
-                    location.href = "<?php echo base_url("/BaseController/view_login"); ?>"
+                    location.href = "<?php echo base_url("/Base/view_login"); ?>"
                   })
                 }
               }
@@ -87,6 +87,6 @@
       }
 
       function _login() {
-        location.href = "<?php echo base_url("/BaseController/view_login") ?>"
+        location.href = "<?php echo base_url("/Base/view_login") ?>"
       }
     </script>

@@ -36,7 +36,7 @@
   app.controller('updateSettingCtrl', function($scope, $http) {
 
     $scope._update = function() {
-      $http.post("<?php echo base_url("SettingController/updateSetting"); ?>", {
+      $http.post("<?php echo base_url("Setting/updateSetting"); ?>", {
         'wifi_open': $scope.wifi_open,
         'wifi_close': $scope.wifi_close,
         'name_cafe': $scope.name_cafe,
@@ -47,7 +47,7 @@
             title: "อัพเดตข้อมูลสำเร็จ !",
             icon: 'success',
           }).then(() => {
-            location.href = '<?php echo base_url("BaseController/view_dashboard"); ?>';
+            location.href = '<?php echo base_url("Base/view_dashboard"); ?>';
           })
         } else {
           Swal.fire({

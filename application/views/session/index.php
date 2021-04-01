@@ -12,7 +12,7 @@ $this->load->view('_layout/header');
       icon: 'warning',
       confirmButtonText: 'ตกลง',
     }).then(() => {
-      location.href = '<?php echo base_url("BaseController"); ?>';
+      location.href = '<?php echo base_url("Base"); ?>';
     })
   }
 </script>

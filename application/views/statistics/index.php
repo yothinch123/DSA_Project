@@ -110,7 +110,7 @@
       $scope.total_report_day = [];
       $scope.register_report_day = [];
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByDay"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Report/fetchReportByDay"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_day.push(item.total)
           $scope.register_report_day.push(item.register_time)
@@ -139,7 +139,7 @@
       $scope.total_report_week = [];
       $scope.register_report_week = [];
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByWeek"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Report/fetchReportByWeek"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_week.push(item.total)
           $scope.register_report_week.push(item.week_beginning)
@@ -168,7 +168,7 @@
       $scope.total_report_month = [];
       $scope.register_report_month = [];
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByMonth"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Report/fetchReportByMonth"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_month.push(item.total)
           $scope.register_report_month.push(item.register_time)
@@ -204,7 +204,7 @@
       $scope.total_report_year = [];
       $scope.register_report_year = [];
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByYear"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Report/fetchReportByYear"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_year.push(item.total)
           $scope.register_report_year.push(item.register_time)
@@ -240,7 +240,7 @@
       $scope.total_report_old_cust = [];
       $scope.register_report_old_cust = [];
 
-      $http.post("<?php echo base_url("ReportController/fetchReportByoldCust"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Report/fetchReportByoldCust"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_old_cust.push(item.total)
           $scope.register_report_old_cust.push(item.ssn)
@@ -275,7 +275,7 @@
           icon: 'warning',
         })
       } else {
-        $http.post("<?php echo base_url("ReportController/fetchReportByCustom"); ?>", {
+        $http.post("<?php echo base_url("Report/fetchReportByCustom"); ?>", {
           'date_start': $scope.date_start.toISOString().slice(0, 10),
           'date_end': $scope.date_end.toISOString().slice(0, 10),
         }).then(function(response) {
@@ -313,13 +313,13 @@
     }
 
     $scope._export_csv = function(type) {
-      location.href = "<?php echo base_url('ReportController/export_data?') ?>" + "type=" + type;
+      location.href = "<?php echo base_url('Report/export_data?') ?>" + "type=" + type;
     }
 
     $scope._export_csv_custom = function() {
       $scope.d_start = $scope.date_start.toISOString().slice(0, 10),
         $scope.d_end = $scope.date_end.toISOString().slice(0, 10),
-        location.href = "<?php echo base_url('ReportController/export_data_custom?') ?>" + "date_start=" + $scope.d_start + "&date_end=" + $scope.d_end;
+        location.href = "<?php echo base_url('Report/export_data_custom?') ?>" + "date_start=" + $scope.d_start + "&date_end=" + $scope.d_end;
     }
   })
 

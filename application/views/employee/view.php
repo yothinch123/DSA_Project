@@ -5,7 +5,7 @@
        <div class="card mb-4">
          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
            <h5 class="m-0 text-white">ข้อมูลพนักงาน</h5>
-           <button class="btn btn-success" onclick="window.location.href='/CPE/BaseController/view_employee_insert'">เพิ่มพนักงาน <i class="fas fa-user-plus"></i></button>
+           <button class="btn btn-success" onclick="window.location.href='/CPE/Base/view_employee_insert'">เพิ่มพนักงาน <i class="fas fa-user-plus"></i></button>
          </div>
          <div class="card-body" ng-app="myApp" ng-controller="employeeCtrl">
            <div class="col-lg-12">
@@ -32,7 +32,7 @@
                      <td>{{ employee.username }}</td>
                      <td>{{ employee.jobtitle }}</td>
                      <td>
-                       <a href="http://localhost/CPE/BaseController/view_employee_update?id={{employee.id}}" class="btn btn-outline-warning btn-sm"><i class="far fa-edit"></i></a>
+                       <a href="http://localhost/CPE/Base/view_employee_update?id={{employee.id}}" class="btn btn-outline-warning btn-sm"><i class="far fa-edit"></i></a>
                        <button id={{employee.id}} class="btn btn-outline-danger btn-sm" ng-click="_deleteID(employee.id)" value='Delete'><i class="fas fa-trash"></i></button>
                      </td>
                      <td>
@@ -89,14 +89,14 @@
      app.controller('employeeCtrl', function($scope, $http) {
 
        $scope._fetchData = function() {
-         $http.post("<?php echo base_url("EmployeeController/getEmployeeBy"); ?>").then(
+         $http.post("<?php echo base_url("Employee/getEmployeeBy"); ?>").then(
            function(response) {
              $scope.employees = response.data;
            });
        }
 
        $scope._showLogin = function(username, name) {
-         $http.post("<?php echo base_url("EmployeeController/getEmployeeLoginByCode"); ?>", {
+         $http.post("<?php echo base_url("Employee/getEmployeeLoginByCode"); ?>", {
            'username': username,
          }).then(function(response) {
            $scope.loginDatas = response.data;
@@ -118,7 +118,7 @@
            cancelButtonText: 'ยกเลิก',
          }).then((result) => {
            if (result.isConfirmed) {
-             $http.post("<?php echo base_url("EmployeeController/deleteEmployee"); ?>", {
+             $http.post("<?php echo base_url("Employee/deleteEmployee"); ?>", {
                'id': id,
              }).then(function(response) {
                if (response) {
