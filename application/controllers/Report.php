@@ -10,9 +10,13 @@ class Report extends CI_Controller
     $this->load->model('ReportModel');
   }
 
-  public function index()
+  public function roundFetch()
   {
-    $this->fetchReportByDay();
+
+    $this->ReportModel->round_report_day();
+    $this->ReportModel->round_report_week();
+    $this->ReportModel->round_report_month();
+    $this->ReportModel->round_report_year();
   }
 
   public function fetchReportByHour()

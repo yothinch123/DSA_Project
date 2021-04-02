@@ -99,11 +99,16 @@
   app.controller('reportCtrl', function($scope, $http) {
 
     $scope._fetchData = function() {
+      $scope._round_fetch();
       $scope._report_day();
       $scope._report_week();
       $scope._report_month();
       $scope._report_year();
       $scope._report_old_cust();
+    }
+
+    $scope._round_fetch = function() {
+      $http.post("<?php echo base_url("Report/roundFetch"); ?>")
     }
 
     $scope._report_day = function() {
@@ -113,7 +118,7 @@
       $http.post("<?php echo base_url("Report/fetchReportByDay"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_day.push(item.total)
-          $scope.register_report_day.push(item.register_time)
+          $scope.register_report_day.push(item.time)
         })
 
         var ctx = document.getElementById("day_chart").getContext('2d');
@@ -142,7 +147,7 @@
       $http.post("<?php echo base_url("Report/fetchReportByWeek"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_week.push(item.total)
-          $scope.register_report_week.push(item.week_beginning)
+          $scope.register_report_week.push(item.time)
         })
 
         var ctx = document.getElementById("week_chart").getContext('2d');
@@ -171,7 +176,7 @@
       $http.post("<?php echo base_url("Report/fetchReportByMonth"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_month.push(item.total)
-          $scope.register_report_month.push(item.register_time)
+          $scope.register_report_month.push(item.time)
         })
 
         var ctx = document.getElementById("month_chart").getContext('2d');
@@ -207,7 +212,7 @@
       $http.post("<?php echo base_url("Report/fetchReportByYear"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_year.push(item.total)
-          $scope.register_report_year.push(item.register_time)
+          $scope.register_report_year.push(item.time)
         })
 
         var ctx = document.getElementById("year_chart").getContext('2d');
