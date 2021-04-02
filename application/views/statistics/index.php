@@ -99,7 +99,7 @@
   app.controller('reportCtrl', function($scope, $http) {
 
     $scope._fetchData = function() {
-      $scope._round_fetch();
+      $scope._round_fetch_data();
       $scope._report_day();
       $scope._report_week();
       $scope._report_month();
@@ -107,7 +107,7 @@
       $scope._report_old_cust();
     }
 
-    $scope._round_fetch = function() {
+    $scope._round_fetch_data = function() {
       $http.post("<?php echo base_url("Report/roundFetch"); ?>")
     }
 

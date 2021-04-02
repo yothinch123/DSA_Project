@@ -12,7 +12,7 @@ class Report extends CI_Controller
 
   public function roundFetch()
   {
-
+    $this->ReportModel->round_report_hour();
     $this->ReportModel->round_report_day();
     $this->ReportModel->round_report_week();
     $this->ReportModel->round_report_month();

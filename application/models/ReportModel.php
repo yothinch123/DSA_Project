@@ -84,11 +84,40 @@ class ReportModel extends CI_Model
     return $query->result_array();
   }
 
+  public function round_report_hour()
+  {
+    $hours = [
+      '00:00:00', '01:00:00', '02:00:00', '03:00:00', '04:00:00', '05:00:00', '06:00:00', '07:00:00',
+      '08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00',
+      '16:00:00', '17:00:00', '18:00:00', '19:00:00', '20:00:00', '21:00:00', '22:00:00', '23:00:00'
+    ];
+
+    $sql1 = "TRUNCATE TABLE tbl_hour";
+    $query1 = $this->db->query($sql1);
+
+    for ($i = 0; $i < count($hours); $i++) {
+      $j = $i + 1;
+      $sql = "INSERT INTO tbl_hour (total,time) VALUES
+        ((SELECT COUNT(register_time)
+        FROM customer_register 
+        WHERE DATE_FORMAT(register_time, '%Y-%m-%d') = CURDATE() AND DATE_FORMAT(register_time,'%H:%i:%s') BETWEEN '$hours[$i]'
+        AND '$hours[$j]') ,'$hours[$i]')
+      ";
+      $query = $this->db->query($sql);
+    }
+
+    if ($query) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public function round_report_day()
   {
     $sql1 = "TRUNCATE TABLE tbl_day";
     $sql2 = "INSERT INTO tbl_day (time,total)
-    SELECT  DATE(register_time) , COUNT(id)
+    SELECT DATE(register_time) , COUNT(id)
     FROM customer_register 
     GROUP BY day(register_time), month(register_time), year(register_time) 
     ORDER BY register_time ASC
@@ -175,5 +204,4 @@ class ReportModel extends CI_Model
       return false;
     }
   }
- 
 }

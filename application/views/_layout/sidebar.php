@@ -13,12 +13,6 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" onclick="window.location.href='/CPE/Base/view_wifi_setting'" style="color: #222831;">
-      <i class="fas fa-edit"></i>
-      <span>จัดการใช้งานไวฟาย</span>
-    </a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" onclick="window.location.href='/CPE/Base/view_statistics'" style="color: #222831;">
       <i class="fas fa-edit"></i>
       <span>จัดการรายงานสถิติ</span>
@@ -32,6 +26,12 @@
       </a>
     </li>
   <?php } ?>
+  <li class="nav-item">
+    <a class="nav-link" onclick="window.location.href='/CPE/Base/view_wifi_setting'" style="color: #222831;">
+      <i class="fas fa-edit"></i>
+      <span>จัดการใช้งานไวฟาย</span>
+    </a>
+  </li>
   <hr class="sidebar-divider">
   <div class="sidebar-heading">
     USER
