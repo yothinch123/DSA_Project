@@ -12,7 +12,7 @@
 <script type="text/javascript">
   setTimeout(function() {
     $(`#box`).remove();
-  }, 150)
+  }, 250)
 </script>
 
 <style>
