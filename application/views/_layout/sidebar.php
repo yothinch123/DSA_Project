@@ -6,13 +6,13 @@
   <div class="sidebar-heading">
     Features
   </div>
-  <li class="nav-item active">
+  <li class="nav-item">
     <a class="nav-link" onclick="window.location.href='/CPE/Base/view_dashboard'" style="color: #222831;">
       <i class="fas fa-home"></i>
       <span>หน้าหลัก</span>
     </a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" >
     <a class="nav-link" onclick="window.location.href='/CPE/Base/view_statistics'" style="color: #222831;">
       <i class="fas fa-edit"></i>
       <span>จัดการรายงานสถิติ</span>
