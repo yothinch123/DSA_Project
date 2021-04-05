@@ -141,7 +141,7 @@
     }
 
     $scope._update = function() {
-      if ($scope._check()) {
+      if ($scope._check()) { 
         $http.post("<?php echo base_url("Employee/updateEmployee"); ?>", {
           'id': <?php echo $_GET['id'] ?>,
           'ssn': $scope.ssn,
@@ -186,10 +186,7 @@
       } else if ($scope.username == undefined || $scope.username == '') {
         Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่ชื่อผู้ใช้', 'warning')
         return false
-      } else if ($scope.password == undefined || $scope.password == '') {
-        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่รหัสผ่าน', 'warning')
-        return false
-      } else if ($scope.phone == undefined || $scope.phone == '' || $scope.ssn.length !== 10) {
+      } else if ($scope.phone == undefined || $scope.phone == '' || $scope.phone.length !== 10) {
         Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่เบอร์มือถือ 10 หลัก', 'warning')
         return false
       } else if ($scope.jobtitle == undefined || $scope.jobtitle == '') {

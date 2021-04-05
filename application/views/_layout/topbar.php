@@ -7,7 +7,7 @@
           <i class="fa fa-bars"></i>
         </button>
       <?php } ?>
-      <span class="text-white">ร้านกาแฟของวิศวคอมพิวเตอร์นะน้องนะ</span>
+      <span class="text-white">ร้านกาแฟของวิศวคอมพิวเตอร์</span>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

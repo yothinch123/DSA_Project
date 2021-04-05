@@ -136,7 +136,7 @@
       } else if ($scope.password == undefined || $scope.password == '') {
         Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่รหัสผ่าน', 'warning')
         return false
-      } else if ($scope.phone == undefined || $scope.phone == '' || $scope.ssn.length !== 10) {
+      } else if ($scope.phone == undefined || $scope.phone == '' || $scope.phone.length !== 10) {
         Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่เบอร์มือถือ 10 หลัก', 'warning')
         return false
       } else if ($scope.jobtitle == undefined || $scope.jobtitle == '') {
