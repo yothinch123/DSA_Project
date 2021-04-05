@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
           <form>
-            <div class=" row">
+            <div class="row">
               <div class="col-12">
                 <div class="row">
                   <div class="col-4">

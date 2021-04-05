@@ -127,6 +127,20 @@ class Base extends CI_Controller
     }
   }
 
+  public function view_rules()
+  {
+    if ($this->session->userdata('username')) {
+      $this->load->view('_layout/header');
+      $this->load->view('_layout/sidebar');
+      $this->load->view('_layout/topbar');
+      $this->load->view('_layout/loading');
+      $this->load->view('rules/index.php');
+      $this->load->view('_layout/footer');
+    } else {
+      $this->load->view('session/index.php');
+    }
+  }
+
   public function Export()
   {
     $this->load->view('statistics/report.php');

@@ -109,9 +109,11 @@
     <div class="col-xl-4 col-lg-5">
       <div class="card" style="height:200px;">
         <div class="card-header">
-          <h6 class="m-0 font-weight-bold text-primary">รายละเอียด</h6>
+          <h6 class="m-0 font-weight-bold text-primary">ไฟล์ข้อบังคับการใข้งาน</h6>
         </div>
-        <div class="card-body">
+        <div class="card-body text-center">
+        <span class="text-dark">เป็นไฟล์ที่ระบุข้อตกลงก่อนเริ่มต้นการใช้งานเครือข่าย</span>
+          <a href="http://localhost/CPE/assets/ข้อบังคับการใช้งาน.docx" class="mt-4 btn btn-info" style="width: 90%;"><i class="fas fa-download"></i>&nbsp ดาวน์โหลดไฟล์</a>
         </div>
       </div>
 

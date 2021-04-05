@@ -43,6 +43,12 @@
     </a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" onclick="window.location.href='/CPE/Base/view_rules'" style="color: #222831;">
+    <i class="far fa-file-pdf"></i>&nbsp;
+      <span>ไฟล์เงื่อนไขการให้บริการ</span>
+    </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" onclick="_logout()" style="color: #222831;">
       <i class="fas fa-sign-out-alt"></i>
       <span>ออกจากระบบ</span>
