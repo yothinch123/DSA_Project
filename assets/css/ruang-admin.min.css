@@ -550,7 +550,7 @@ a:focus {
 .sidebar {
 	min-height: 100vh;
 	width: 14rem !important;
-	background-color: #fff !important;
+	background-color: #2a363b !important;
 	-webkit-box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 	box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 	z-index: 0;
@@ -893,7 +893,7 @@ a:focus {
 	}
 	.sidebar.toggled .nav-item .collapse .collapse-inner .collapse-item:hover,
 	.sidebar.toggled .nav-item .collapsing .collapse-inner .collapse-item:hover {
-		background-color: #eaecf4;
+		background-color: #f4f3ea;
 		transition: all 0.3s ease-in-out;
 		-webkit-transition: all 0.3s ease-in-out;
 	}
@@ -968,7 +968,7 @@ a:focus {
 	background-color: #ffffff;
 }
 .sidebar-light hr.sidebar-divider {
-	border-top: 1px solid #eaecf4;
+	border-top: 1px solid #ffffff;
 }
 .sidebar-light .sidebar-heading {
 	color: #b7b9cc;
