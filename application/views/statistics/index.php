@@ -32,28 +32,28 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab"><br>
                 <div style="height: 69vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> Excel </i></button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> Excel</button>
                   <canvas id="day_chart" width="400" height="400"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> Excel </i></button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> Excel</button>
                   <canvas id="week_chart" width="400" height="400"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> Excel </i></button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> Excel</button>
                   <canvas id="month_chart" width="400" height="400"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> Excel </i></button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> Excel</button>
                   <canvas id="year_chart" width="400" height="400"></canvas>
                 </div>
               </div>
@@ -62,7 +62,7 @@
 
           <div id="stat_old_customer" style="display: none;" class="pt-5">
             <div style="border-bottom: 1px solid #c9d6df;height: 60px;">
-              <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> Excel </i></button>
+              <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> Excel</button>
             </div>
             <div class="pt-3" style="height: 65vh; overflow-y: scroll;">
               <canvas id="old_cust_chart" width="400" height="400"></canvas>
@@ -70,7 +70,7 @@
           </div>
 
           <div id="stat_custom" style="display: none;" class="pt-5">
-            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv_custom()"> Excel </i></button>
+            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv_custom()"> Excel</button>
             <div style="border-bottom: 1px solid #c9d6df; padding: 20px 20px 20px 20px;">
               <div style="display: flex;justify-content:center">
                 <div></div>
@@ -79,7 +79,7 @@
                   <input class="btn btn-outline-light ml-2" ng-model="date_start" type="date">
                   <Label class="ml-2">ถึงวันที่</Label>
                   <input class="btn btn-outline-light ml-2" ng-model="date_end" type="date">
-                  <button class="btn btn-primary ml-3" ng-click="_search_custom()"><i class="fas fa-search"></i> ค้นหา</button>
+                  <button class="btn btn-primary ml-3 active" ng-click="_search_custom()"><i class="fas fa-search"></i> ค้นหา</button>
                 </div>
               </div>
             </div>

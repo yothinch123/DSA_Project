@@ -15,9 +15,15 @@
   <li class="nav-item">
     <a class="nav-link" onclick="window.location.href='/CPE/Base/view_statistics'" style="color: white;">
       <i class="fas fa-edit"></i>
-      <span>จัดการรายงานสถิติ</span>
+      <span>จัดการรายงานข้อมูล</span>
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" onclick="window.location.href='/CPE/Base/view_wifi_setting'" style="color: white;">
+      <i class="fas fa-edit"></i>
+      <span>จัดการตั้งค่าอุปกรณ์</span>
+    </a>
+  </li> 
   <?php if ($this->session->userdata('jobtitle') == "เจ้าของร้าน") { ?>
     <li class="nav-item">
       <a class="nav-link" onclick="window.location.href='/CPE/Base/view_employee'" style="color: white;">
@@ -26,12 +32,6 @@
       </a>
     </li>
   <?php } ?>
-  <li class="nav-item">
-    <a class="nav-link" onclick="window.location.href='/CPE/Base/view_wifi_setting'" style="color: white;">
-      <i class="fas fa-edit"></i>
-      <span>จัดการใช้งานไวฟาย</span>
-    </a>
-  </li>
   <hr class="sidebar-divider">
   <div class="sidebar-heading">
     USER
@@ -58,7 +58,7 @@
 <style>
   li {
     cursor: pointer;
-  } 
+  }  
 </style>
 
 <!-- Sidebar -->

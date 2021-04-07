@@ -6,7 +6,7 @@
         <div class="card mb-4">
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
             <h5 class="m-0 text-white">ข้อมูลส่วนตัว</h5>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#passwordModal"><i class="fas fa-unlock-alt"></i> เปลี่ยนรหัสผ่าน </button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#passwordModal"><i class="fas fa-unlock-alt"></i> เปลี่ยนรหัสผ่าน </button>
           </div>
           <div class="card-body text-left">
             <div class="d-flex justify-content-between">
@@ -98,7 +98,6 @@
   </div>
 
 </div>
-
 
 <script>
   var app = angular.module('updateEmployeeApp', []);
