@@ -79,7 +79,7 @@
                   <input class="btn btn-outline-light ml-2" ng-model="date_start" type="date">
                   <Label class="ml-2">ถึงวันที่</Label>
                   <input class="btn btn-outline-light ml-2" ng-model="date_end" type="date">
-                  <button class="btn btn-primary ml-3 active" ng-click="_search_custom()"><i class="fas fa-search"></i> ค้นหา</button>
+                  <button class="btn btn-info ml-3" ng-click="_search_custom()"><i class="fas fa-search"></i> ค้นหา</button>
                 </div>
               </div>
             </div>
