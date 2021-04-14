@@ -16,25 +16,30 @@
             <input type="time" ng-model="wifi_close" class="form-control">
             <small id="" class="form-text text-muted">Example : 16.00</small>
           </div>
+          <div class="form-group">
+            <label for="">ระยะเวลาการใช้งาน WiFI / ชม.</label>
+            <input type="number" ng-model="wifi_close" class="form-control">
+            <small id="" class="form-text text-muted">Example : 3 ชั่วโมง</small>
+          </div>
           <div class="text-center">
             <button type="submit" ng-click="_update()" class="btn btn-info">บันทึก</button>
           </div>
         </div>
       </form>
-    </div>
-    <div class="card mb-4 mt-5">
+    </div> 
+    <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
-        <h5 class="m-0 text-white">ตั้งรหัสผ่าน Wi-Fi &nbsp; <i class="fas fa-wifi"></i></h5>
+        <h5 class="m-0 text-white">ตั้งค่ารหัสผ่านสำหรับเข้าอุปกรณ์</h5>
       </div>
       <form>
-        <div class="card-body row">
-          <div class="form-group col-12">
-            <label for="">Password</label>
+        <div class="card-body"> 
+          <div class="form-group">
+            <label for="">กรุณาใส่รหัสผ่าน</label>
             <input type="password" ng-model="password" class="form-control">
-            <small id="" class="form-text text-muted">Example : xxxxxx</small>
+            <small id="" class="form-text text-muted">Example : xxxx</small>
           </div>
-          <div style="margin-left: 40%;">
-            <button type="submit" ng-click="_update_password()" class="btn btn-info">บันทึก</button>
+          <div class="text-center">
+            <button type="submit" ng-click="_update()" class="btn btn-info">บันทึก</button>
           </div>
         </div>
       </form>

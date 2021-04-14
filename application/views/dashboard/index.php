@@ -100,7 +100,7 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="day_chart" style="width: 500px;height:310px"></canvas>
+            <canvas id="day_chart" style="width: 500px;height:85%"></canvas>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@
         </div>
         <div class="card-body text-center">
         <span class="text-dark">เป็นไฟล์ที่ระบุข้อตกลงก่อนเริ่มต้นการใช้งานเครือข่าย</span>
-          <a href="http://localhost/CPE/assets/ข้อบังคับการใช้งาน.docx" class="mt-3 btn btn-info btn-sm" style="width: 90%;"><i class="fas fa-download"></i>&nbsp ดาวน์โหลดไฟล์</a>
+          <a href="http://localhost/CPE/assets/ข้อบังคับการใช้งาน.docx" class="mt-4 btn btn-info" style="width: 40%;"><i class="fas fa-download"></i>&nbsp ดาวน์โหลดไฟล์</a>
         </div>
       </div>
 
