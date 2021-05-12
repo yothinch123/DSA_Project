@@ -32,29 +32,29 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab"><br>
                 <div style="height: 69vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> Excel</button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> csv</button>
                   <canvas id="day_chart" width="400" height="400"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> Excel</button>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> csv</button>
                   <canvas id="week_chart" width="400" height="400"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> Excel</button>
-                  <canvas id="month_chart" width="400" height="400"></canvas>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> csv</button>
+                  <canvas id="month_chart" width="400" height="200"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
-                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> Excel</button>
-                  <canvas id="year_chart" width="400" height="400"></canvas>
+                  <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> csv</button>
+                  <canvas id="year_chart" width="400" height="90"></canvas>
                 </div>
               </div>
             </div>
@@ -62,15 +62,15 @@
 
           <div id="stat_old_customer" style="display: none;" class="pt-5">
             <div style="border-bottom: 1px solid #c9d6df;height: 60px;">
-              <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> Excel</button>
+              <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> csv</button>
             </div>
             <div class="pt-3" style="height: 65vh; overflow-y: scroll;">
-              <canvas id="old_cust_chart" width="400" height="400"></canvas>
+              <canvas id="old_cust_chart" width="400" height="150"></canvas>
             </div>
           </div>
 
           <div id="stat_custom" style="display: none;" class="pt-5">
-            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv_custom()"> Excel</button>
+            <button style="float: right;" class="btn btn-success mt-4" ng-click="_export_csv_custom()"> csv</button>
             <div style="border-bottom: 1px solid #c9d6df; padding: 20px 20px 20px 20px;">
               <div style="display: flex;justify-content:center">
                 <div></div>
@@ -108,14 +108,14 @@
     }
 
     $scope._round_fetch_data = function() {
-      $http.post("<?php echo base_url("Report/roundFetch"); ?>")
+      $http.post("<?php echo base_url("index.php/Report/roundFetch"); ?>")
     }
 
     $scope._report_day = function() {
       $scope.total_report_day = [];
       $scope.register_report_day = [];
 
-      $http.post("<?php echo base_url("Report/fetchReportByDay"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("index.php/Report/fetchReportByDay"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_day.push(item.total)
           $scope.register_report_day.push(item.time)
@@ -144,7 +144,7 @@
       $scope.total_report_week = [];
       $scope.register_report_week = [];
 
-      $http.post("<?php echo base_url("Report/fetchReportByWeek"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("index.php/Report/fetchReportByWeek"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_week.push(item.total)
           $scope.register_report_week.push(item.time)
@@ -173,7 +173,7 @@
       $scope.total_report_month = [];
       $scope.register_report_month = [];
 
-      $http.post("<?php echo base_url("Report/fetchReportByMonth"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("index.php/Report/fetchReportByMonth"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_month.push(item.total)
           $scope.register_report_month.push(item.time)
@@ -209,7 +209,7 @@
       $scope.total_report_year = [];
       $scope.register_report_year = [];
 
-      $http.post("<?php echo base_url("Report/fetchReportByYear"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("index.php/Report/fetchReportByYear"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_year.push(item.total)
           $scope.register_report_year.push(item.time)
@@ -245,7 +245,7 @@
       $scope.total_report_old_cust = [];
       $scope.register_report_old_cust = [];
 
-      $http.post("<?php echo base_url("Report/fetchReportByoldCust"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("index.php/Report/fetchReportByoldCust"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_report_old_cust.push(item.total)
           $scope.register_report_old_cust.push(item.ssn)
@@ -280,7 +280,7 @@
           icon: 'warning',
         })
       } else {
-        $http.post("<?php echo base_url("Report/fetchReportByCustom"); ?>", {
+        $http.post("<?php echo base_url("index.php/Report/fetchReportByCustom"); ?>", {
           'date_start': $scope.date_start.toISOString().slice(0, 10),
           'date_end': $scope.date_end.toISOString().slice(0, 10),
         }).then(function(response) {
@@ -318,13 +318,13 @@
     }
 
     $scope._export_csv = function(type) {
-      location.href = "<?php echo base_url('Report/export_data?') ?>" + "type=" + type;
+      location.href = "<?php echo base_url('index.php/Report/export_data?') ?>" + "type=" + type;
     }
 
     $scope._export_csv_custom = function() {
       $scope.d_start = $scope.date_start.toISOString().slice(0, 10),
         $scope.d_end = $scope.date_end.toISOString().slice(0, 10),
-        location.href = "<?php echo base_url('Report/export_data_custom?') ?>" + "date_start=" + $scope.d_start + "&date_end=" + $scope.d_end;
+        location.href = "<?php echo base_url('index.php/Report/export_data_custom?') ?>" + "date_start=" + $scope.d_start + "&date_end=" + $scope.d_end;
     }
   })
 

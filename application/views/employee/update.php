@@ -67,7 +67,7 @@
         </div>
         <div class="card-footer text-right bg-white" style="height: 75px;">
           <button type="submit" ng-click="_update()" class="btn btn-primary">บันทึก</button>
-          <a href="<?php echo base_url("Base/view_employee"); ?>" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
+          <a href="<?php echo base_url("index.php/Base/view_employee"); ?>" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
         </div>
         </form>
       </div>
@@ -105,7 +105,7 @@
   app.controller('updateEmployeeCtrl', function($scope, $http) {
 
     $scope._fetchData = function() {
-      $http.post("<?php echo base_url("Employee/getEmployeeByCode"); ?>", {
+      $http.post("<?php echo base_url("index.php/Employee/getEmployeeByCode"); ?>", {
         'id': <?php echo $_GET['id'] ?>,
       }).then(function(response) {
         var user = response.data;
@@ -119,7 +119,7 @@
     }
 
     $scope._update_pass = function() {
-      $http.post("<?php echo base_url("Employee/updatePasswordEmp"); ?>", {
+      $http.post("<?php echo base_url("index.php/Employee/updatePasswordEmp"); ?>", {
         'id': <?php echo $_GET['id'] ?>,
         'password': $scope.password,
       }).then(function(response) {
@@ -142,7 +142,7 @@
 
     $scope._update = function() {
       if ($scope._check()) { 
-        $http.post("<?php echo base_url("Employee/updateEmployee"); ?>", {
+        $http.post("<?php echo base_url("index.php/Employee/updateEmployee"); ?>", {
           'id': <?php echo $_GET['id'] ?>,
           'ssn': $scope.ssn,
           'fname': $scope.fname,
@@ -156,7 +156,7 @@
               title: "อัพเดตข้อมูลสำเร็จ !",
               icon: 'success',
             }).then(function() {
-              location.href = '<?php echo base_url("Base/view_employee"); ?>';
+              location.href = '<?php echo base_url("index.php/Base/view_employee"); ?>';
             })
           } else {
             Swal.fire({

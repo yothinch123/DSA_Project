@@ -100,7 +100,7 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="day_chart" style="width: 500px;height:85%"></canvas>
+            <canvas id="day_chart" style="width: 500px;height:90%"></canvas>
           </div>
         </div>
       </div>
@@ -144,7 +144,7 @@
       $scope.total_customer_now = [];
       $scope.all_times = [];
 
-      $http.post("<?php echo base_url("Report/fetchReportByDay"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("index.php/Report/fetchReportByDay"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_customer_now.push(item.total)
         })
@@ -171,7 +171,7 @@
         });
       });
 
-      $http.post("<?php echo base_url("Report/fetchReportByoldCust"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("index.php/Report/fetchReportByoldCust"); ?>").then(function(response) {
         $scope.total_customer = response.data.length
       });
     }

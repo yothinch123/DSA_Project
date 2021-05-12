@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
           <!-- <iframe style="width: 100%; height: 100vh;" src="https://view.officeapps.live.com/op/view.aspx?src=http://localhost/CPE/assets/ข้อบังคับการใช้งาน.docx"></iframe> -->
-          <iframe style="width: 100%; height: 100vh;" src="https://view.officeapps.live.com/op/view.aspx?src="<?php echo base_url("Base/view_r"); ?>"></iframe>
+          <iframe style="width: 100%; height: 100vh;" src="https://view.officeapps.live.com/op/view.aspx?src="<?php echo base_url("index.php/Base/view_r"); ?>"></iframe>
         </div>
       </div>
     </div>

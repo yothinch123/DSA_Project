@@ -105,7 +105,7 @@
   app.controller('updateEmployeeCtrl', function($scope, $http) {
 
     $scope._update_pass = function() {
-      $http.post("<?php echo base_url("Employee/updatePasswordEmp"); ?>", {
+      $http.post("<?php echo base_url("index.php/Employee/updatePasswordEmp"); ?>", {
         'id': <?php echo $this->session->userdata('id') ?>,
         'password': $scope.password,
       }).then(function(response) {

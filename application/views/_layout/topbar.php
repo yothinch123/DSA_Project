@@ -67,7 +67,7 @@
         }).then((result) => {
           if (result.isConfirmed) {
             $.ajax({
-              url: "<?php echo base_url("/Login/logout"); ?>",
+              url: "<?php echo base_url("index.php/Login/logout"); ?>",
               success: function(respone) {
                 if (respone) {
                   Swal.fire({
@@ -76,7 +76,7 @@
                     showConfirmButton: false,
                     timer: 1000
                   }).then(() => {
-                    location.href = "<?php echo base_url("/Base/view_login"); ?>"
+                    location.href = "<?php echo base_url("index.php/Base/view_login"); ?>"
                   })
                 }
               }
@@ -87,6 +87,6 @@
       }
 
       function _login() {
-        location.href = "<?php echo base_url("/Base/view_login") ?>"
+        location.href = "<?php echo base_url("index.php/Base/view_login") ?>"
       }
     </script>

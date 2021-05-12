@@ -74,7 +74,7 @@
         </div>
         <div class="card-footer text-right bg-white" style="height: 75px;">
           <button type="submit" ng-click="_insert()" class="btn btn-primary">บันทึก</button>
-          <a href="<?php echo base_url("Base/view_employee"); ?>" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
+          <a href="<?php echo base_url("index.php/Base/view_employee"); ?>" type="reset" class="btn btn-secondary">ย้อนกลับ</a>
         </div>
         </form>
       </div>
@@ -89,7 +89,7 @@
   app.controller('insertEmployeeCtrl', function($scope, $http) {
     $scope._insert = function() {
       if ($scope._check()) {
-        $http.post("<?php echo base_url("Employee/insertEmployee"); ?>", {
+        $http.post("<?php echo base_url("index.php/Employee/insertEmployee"); ?>", {
           'ssn': $scope.ssn,
           'fname': $scope.fname,
           'lname': $scope.lname,
@@ -103,7 +103,7 @@
               title: "เพิ่มพนักงานสำเร็จ !",
               icon: 'success',
             }).then(function() {
-              location.href = '<?php echo base_url("Base/view_employee"); ?>';
+              location.href = '<?php echo base_url("index.php/Base/view_employee"); ?>';
             })
           } else {
             Swal.fire({
