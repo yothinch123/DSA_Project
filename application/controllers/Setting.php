@@ -16,30 +16,45 @@ class Setting extends CI_Controller
     $data = array(
       'wifi_open'  => $file_input->wifi_open,
       'wifi_close' => $file_input->wifi_close,
-      'name_cafe'  => $file_input->name_cafe,
+      'time_use' => $file_input->time_use,
     );
     $result = $this->SettingModel->update_setting($data);
 
     if ($result) {
-      $this->createSettingLog();
+      $text = "ตั้งค่าเวลา";
+      $this->createSettingLog($text);
       echo true;
     } else {
       echo false;
     }
   }
 
-  public function createSettingLog()
+  public function updateSettingPass()
+  {
+    $file_input = json_decode(file_get_contents("php://input"));
+    $password = $file_input->password;
+    $result = $this->SettingModel->update_setting_pass($password);
+
+    if ($result) {
+      $text = "เปลี่ยนรหัสผ่าน";
+      $this->createSettingLog($text);
+      echo true;
+    } else {
+      echo false;
+    }
+  }
+  public function createSettingLog($text)
   {
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
       $ip = $_SERVER['HTTP_CLIENT_IP'];
     } else {
       $ip = $_SERVER['REMOTE_ADDR'];
     }
-
     $username = $this->session->userdata('username');
     $data = array(
       'ip' => $ip,
-      'username_emp' => $username
+      'username_emp' => $username,
+      'text' => $text
     );
 
     $this->SettingModel->insert_setting_log($data);

@@ -14,10 +14,23 @@ class SettingModel extends CI_Model
 
     $sql = "UPDATE setting SET 
     details = CASE WHEN attribute = 'wifi_open' THEN '$wifi_open'
-    WHEN attribute = 'wifi_close' THEN '$wifi_close'
-    WHEN attribute = 'name_cafe' THEN '$name_cafe'
+    WHEN attribute = 'wifi_close' THEN '$wifi_close' 
+    WHEN attribute = 'time_use' THEN '$time_use'
     END 
-    WHERE attribute IN ('wifi_open','wifi_close','name_cafe')";
+    WHERE attribute IN ('wifi_open','wifi_close','time_use')";
+
+    $query = $this->db->query($sql);
+
+    if ($query) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function update_setting_pass($password)
+  {
+    $sql = "UPDATE `setting` SET `details` = '$password' WHERE `setting`.`attribute` = 'password'";
 
     $query = $this->db->query($sql);
 
@@ -40,7 +53,7 @@ class SettingModel extends CI_Model
         ) VALUES (
         '$username_emp', 
         now(),
-        'ตั้งเวลา WiFi',
+        '$text',
         '$ip'
         )";
 

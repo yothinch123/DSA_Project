@@ -18,28 +18,28 @@
           </div>
           <div class="form-group">
             <label for="">ระยะเวลาการใช้งาน WiFI / ชม.</label>
-            <input type="number" ng-model="wifi_close" class="form-control">
+            <input type="number" ng-model="time_use" class="form-control">
             <small id="" class="form-text text-muted">Example : 3 ชั่วโมง</small>
           </div>
           <div class="text-center">
-            <button type="submit" ng-click="_update()" class="btn btn-info">บันทึก</button>
+            <button type="submit" ng-click="_update_time()" class="btn btn-info">บันทึก</button>
           </div>
         </div>
       </form>
-    </div> 
+    </div>
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
         <h5 class="m-0 text-white">ตั้งค่ารหัสผ่านสำหรับเข้าอุปกรณ์</h5>
       </div>
       <form>
-        <div class="card-body"> 
+        <div class="card-body">
           <div class="form-group">
             <label for="">กรุณาใส่รหัสผ่าน</label>
             <input type="password" ng-model="password" class="form-control">
             <small id="" class="form-text text-muted">Example : xxxx</small>
           </div>
           <div class="text-center">
-            <button type="submit" ng-click="_update()" class="btn btn-info">บันทึก</button>
+            <button type="submit" ng-click="_update_pass()" class="btn btn-info">บันทึก</button>
           </div>
         </div>
       </form>
@@ -90,14 +90,16 @@
   var app = angular.module('updateSettingApp', []);
   app.controller('updateSettingCtrl', function($scope, $http) {
 
-    $scope._updates = function() {
+    $scope._update_time = function() {
+      console.log($scope.wifi_open);
+      console.log($scope.wifi_close);
+      console.log($scope.time_use);
       $http.post("<?php echo base_url("index.php/Setting/updateSetting"); ?>", {
         'wifi_open': $scope.wifi_open,
         'wifi_close': $scope.wifi_close,
-        'name_cafe': $scope.name_cafe,
+        'time_use': $scope.time_use,
       }).then(function(response) {
         if (response.data === "1") {
-          $scope.password = null;
           Swal.fire({
             title: "อัพเดตข้อมูลสำเร็จ !",
             icon: 'success',
@@ -107,6 +109,27 @@
         } else {
           Swal.fire({
             title: "เกิดข้อผิดพลาดในการอัพเดตข้อมูล!",
+            icon: 'error',
+          })
+        }
+      })
+    }
+
+    $scope._update_pass = function() {
+      $http.post("<?php echo base_url("index.php/Setting/updateSettingPass"); ?>", {
+        'password': $scope.password
+      }).then(function(response) {
+        if (response.data === "1") {
+          $scope.password = null;
+          Swal.fire({
+            title: "อัพเดตรหัสผ่านสำเร็จ !",
+            icon: 'success',
+          }).then(() => {
+            location.href = '<?php echo base_url("index.php/Base/view_dashboard"); ?>';
+          })
+        } else {
+          Swal.fire({
+            title: "เกิดข้อผิดพลาดในการอัพเดตรหัสผ่าน!",
             icon: 'error',
           })
         }
