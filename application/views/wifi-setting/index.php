@@ -8,12 +8,12 @@
         <div class="card-body">
           <div class="form-group">
             <label for="">เวลาเปิด WIFI</label>
-            <input type="time" ng-model="wifi_open" class="form-control">
+            <input type="time" ng-model="wifi_open" id="wifi_open" class="form-control">
             <small id="" class="form-text text-muted">Example : 08.00</small>
           </div>
           <div class="form-group">
             <label for="">เวลาปิด WIFI</label>
-            <input type="time" ng-model="wifi_close" class="form-control">
+            <input type="time" ng-model="wifi_close" id="wifi_close" class="form-control">
             <small id="" class="form-text text-muted">Example : 16.00</small>
           </div>
           <div class="form-group">
@@ -91,12 +91,11 @@
   app.controller('updateSettingCtrl', function($scope, $http) {
 
     $scope._update_time = function() {
-      console.log($scope.wifi_open);
-      console.log($scope.wifi_close);
-      console.log($scope.time_use);
+      var w_open = document.getElementById("wifi_open").value
+      var w_close = document.getElementById("wifi_close").value
       $http.post("<?php echo base_url("index.php/Setting/updateSetting"); ?>", {
-        'wifi_open': $scope.wifi_open,
-        'wifi_close': $scope.wifi_close,
+        'wifi_open': w_open,
+        'wifi_close': w_close,
         'time_use': $scope.time_use,
       }).then(function(response) {
         if (response.data === "1") {
