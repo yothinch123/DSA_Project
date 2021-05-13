@@ -89,14 +89,14 @@
      app.controller('employeeCtrl', function($scope, $http) {
 
        $scope._fetchData = function() {
-         $http.post("<?php echo base_url("index.php/Employee/getEmployeeBy"); ?>").then(
+         $http.post("<?php echo base_url("Employee/getEmployeeBy"); ?>").then(
            function(response) {
              $scope.employees = response.data;
            });
        }
 
        $scope._showLogin = function(username, name) {
-         $http.post("<?php echo base_url("index.php/Employee/getEmployeeLoginByCode"); ?>", {
+         $http.post("<?php echo base_url("Employee/getEmployeeLoginByCode"); ?>", {
            'username': username,
          }).then(function(response) {
            $scope.loginDatas = response.data;
@@ -118,7 +118,7 @@
            cancelButtonText: 'ยกเลิก',
          }).then((result) => {
            if (result.isConfirmed) {
-             $http.post("<?php echo base_url("index.php/Employee/deleteEmployee"); ?>", {
+             $http.post("<?php echo base_url("Employee/deleteEmployee"); ?>", {
                'id': id,
              }).then(function(response) {
                if (response) {

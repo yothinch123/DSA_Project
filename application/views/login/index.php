@@ -20,7 +20,7 @@
         <div class="pt-2 text-center">
           <button style="width: 100%;" type="submit" ng-click="_check_login()" class="btn btn-primary text-white"> เข้าสู่ระบบ</button>
           <hr>
-          <a style="width: 100%;" href="<?php echo base_url("index.php/Base") ?>" class="text-dark"> กลับสู่หน้าหลัก</a>
+          <a style="width: 100%;" href="<?php echo base_url("Base") ?>" class="text-dark"> กลับสู่หน้าหลัก</a>
         </div>
     </form>
   </div>
@@ -30,7 +30,7 @@
 
   app.controller('loginCtrl', function($scope, $http) {
     $scope._check_login = function() {
-      $http.post("<?php echo base_url("index.php/Login/check_login"); ?>", {
+      $http.post("<?php echo base_url("Login/check_login"); ?>", {
         'username': $scope.username,
         'password': $scope.password,
       }).then(function(response) {
@@ -41,7 +41,7 @@
             showConfirmButton: false,
             timer: 1000
           }).then(function() {
-            location.href = '<?php echo base_url("index.php/Base/view_dashboard"); ?>';
+            location.href = '<?php echo base_url("Base/view_dashboard"); ?>';
           })
         } else {
           Swal.fire({

@@ -59,4 +59,21 @@ class Setting extends CI_Controller
 
     $this->SettingModel->insert_setting_log($data);
   }
+  
+  public function getCustomerBy()
+  {
+    $result = $this->SettingModel->fetch_customer_by();
+    echo json_encode($result);
+  }
+
+  public function getCustomerByToday()
+  {
+    $result = $this->SettingModel->fetch_customer_by_today();
+    echo json_encode($result);
+  }
+  public function getTimeUse()
+  {
+    $result = $this->SettingModel->fetch_time_use();
+    echo json_encode($result);
+  }
 }

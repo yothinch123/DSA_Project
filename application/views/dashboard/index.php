@@ -6,14 +6,10 @@
           <div class="row align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-uppercase mb-1">จำนวนลูกค้าทีใช้งานวันนี้</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">35 คน</div>
-              <div class="mt-2 mb-0 text-muted text-xs">
-                <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span>Since last month</span> -->
-              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{today_customer}} คน</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-wifi fa-2x text-primary"></i>
+              <i class="fas fa-users fa-2x text-info"></i>
             </div>
           </div>
         </div>
@@ -27,13 +23,9 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-uppercase mb-1">จำนวนลูกค้าทั้งหมด</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_customer }} คน </div>
-              <div class="mt-2 mb-0 text-muted text-xs">
-                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                <span>Since last years</span>
-              </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-shopping-cart fa-2x text-success"></i>
+              <i class="fas fa-users fa-2x text-info"></i>
             </div>
           </div>
         </div>
@@ -47,13 +39,9 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-uppercase mb-1">ชื่อไวไฟ</div>
               <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">CPE-Cafe</div>
-              <div class="mt-2 mb-0 text-muted text-xs">
-                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
-                <span>Since last month</span>
-              </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-users fa-2x text-info"></i>
+              <i class="fas fa-wifi fa-2x text-primary"></i>
             </div>
           </div>
         </div>
@@ -66,14 +54,10 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-uppercase mb-1">ระยะเวลาการให้บริการไวไฟ</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">3 ชม</div>
-              <div class="mt-2 mb-0 text-muted text-xs">
-                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span>Since yesterday</span>
-              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ time_use }} ชม</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-comments fa-2x text-warning"></i>
+              <i class="fas fa-wifi fa-2x text-primary"></i>
             </div>
           </div>
         </div>
@@ -112,7 +96,7 @@
           <h6 class="m-0 font-weight-bold text-primary">ไฟล์ข้อบังคับการใข้งาน</h6>
         </div>
         <div class="card-body text-center">
-        <span class="text-dark">เป็นไฟล์ที่ระบุข้อตกลงก่อนเริ่มต้นการใช้งานเครือข่าย</span>
+          <span class="text-dark">เป็นไฟล์ที่ระบุข้อตกลงก่อนเริ่มต้นการใช้งานเครือข่าย</span>
           <a href="http://localhost/CPE/assets/ข้อบังคับการใช้งาน.docx" class="mt-4 btn btn-info" style="width: 40%;"><i class="fas fa-download"></i>&nbsp ดาวน์โหลดไฟล์</a>
         </div>
       </div>
@@ -138,13 +122,14 @@
   app.controller('reportCtrl', function($scope, $http) {
     $scope._fetchData = function() {
       $scope._report_today();
+      // $scope._fetch_customer();
     }
 
     $scope._report_today = function() {
       $scope.total_customer_now = [];
       $scope.all_times = [];
 
-      $http.post("<?php echo base_url("index.php/Report/fetchReportByDay"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Report/fetchReportByDay"); ?>").then(function(response) {
         response.data.map(item => {
           $scope.total_customer_now.push(item.total)
         })
@@ -171,11 +156,19 @@
         });
       });
 
-      $http.post("<?php echo base_url("index.php/Report/fetchReportByoldCust"); ?>").then(function(response) {
+      $http.post("<?php echo base_url("Setting/getCustomerBy"); ?>").then(function(response) {
         $scope.total_customer = response.data.length
       });
-    }
 
+      $http.post("<?php echo base_url("Setting/getCustomerByToday"); ?>").then(function(response) {
+        $scope.today_customer = response.data.length
+      });
+
+      $http.post("<?php echo base_url("Setting/getTimeUse"); ?>").then(function(response) {
+        $scope.time_use = response.data[0].time
+      });
+
+    }
   })
 
   document.addEventListener('DOMContentLoaded', function() {

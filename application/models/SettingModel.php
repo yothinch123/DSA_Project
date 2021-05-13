@@ -60,4 +60,28 @@ class SettingModel extends CI_Model
     $query = $this->db->query($sql);
     return $query;
   }
+
+  function fetch_customer_by()
+  {
+    $sql = "SELECT * FROM customer";
+
+    $query = $this->db->query($sql);
+    return $query->result();
+  }
+  
+  function fetch_customer_by_today()
+  {
+    $sql = "SELECT COUNT(ssn) AS total FROM customer_register WHERE DATE(register_time) = CURDATE() GROUP BY ssn";
+
+    $query = $this->db->query($sql);
+    return $query->result();
+  }
+  
+  function fetch_time_use()
+  {
+    $sql = "SELECT details as time FROM setting WHERE attribute = 'time_use'";
+
+    $query = $this->db->query($sql);
+    return $query->result();
+  }
 }

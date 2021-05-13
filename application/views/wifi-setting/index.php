@@ -93,7 +93,7 @@
     $scope._update_time = function() {
       var w_open = document.getElementById("wifi_open").value
       var w_close = document.getElementById("wifi_close").value
-      $http.post("<?php echo base_url("index.php/Setting/updateSetting"); ?>", {
+      $http.post("<?php echo base_url("Setting/updateSetting"); ?>", {
         'wifi_open': w_open,
         'wifi_close': w_close,
         'time_use': $scope.time_use,
@@ -103,7 +103,7 @@
             title: "อัพเดตข้อมูลสำเร็จ !",
             icon: 'success',
           }).then(() => {
-            location.href = '<?php echo base_url("index.php/Base/view_dashboard"); ?>';
+            location.href = '<?php echo base_url("Base/view_dashboard"); ?>';
           })
         } else {
           Swal.fire({
@@ -115,7 +115,7 @@
     }
 
     $scope._update_pass = function() {
-      $http.post("<?php echo base_url("index.php/Setting/updateSettingPass"); ?>", {
+      $http.post("<?php echo base_url("Setting/updateSettingPass"); ?>", {
         'password': $scope.password
       }).then(function(response) {
         if (response.data === "1") {
@@ -124,7 +124,7 @@
             title: "อัพเดตรหัสผ่านสำเร็จ !",
             icon: 'success',
           }).then(() => {
-            location.href = '<?php echo base_url("index.php/Base/view_dashboard"); ?>';
+            location.href = '<?php echo base_url("Base/view_dashboard"); ?>';
           })
         } else {
           Swal.fire({
