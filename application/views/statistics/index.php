@@ -34,28 +34,28 @@
               <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab"><br>
                 <div style="height: 69vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> csv</button>
-                  <canvas id="day_chart" width="400" height="400"></canvas>
+                  <canvas id="day_chart" width="400" height="150"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> csv</button>
-                  <canvas id="week_chart" width="400" height="400"></canvas>
+                  <canvas id="week_chart" width="400" height="150"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> csv</button>
-                  <canvas id="month_chart" width="400" height="200"></canvas>
+                  <canvas id="month_chart" width="400" height="100"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('year')"> csv</button>
-                  <canvas id="year_chart" width="400" height="90"></canvas>
+                  <canvas id="year_chart" width="400" height="50"></canvas>
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div style="height: 69vh; overflow-y: scroll;">
-              <canvas id="custom_chart" width="400" height="400"></canvas>
+              <canvas id="custom_chart" width="400" height="150"></canvas>
             </div>
           </div>
         </div>

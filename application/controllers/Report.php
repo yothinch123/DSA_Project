@@ -111,15 +111,31 @@ class Report extends CI_Controller
       return false;
     }
   }
-  public function export_CSV($data)
+  public function export_CSV($data, $type)
   {
     $handle = fopen('php://output', 'w');
     ob_clean();
-    fputs($handle,(chr(0xEF).chr(0xBB).chr(0xBF)));
-    fputcsv($handle, array('No', 'วันที่', 'ชื่อ', 'อายุ', 'อีเมล', 'โทร', 'ขนาดห้องที่สนใจ', 'วัตถุประสงค์', 'งบประมาณ'));
-     
+    fputs($handle, (chr(0xEF) . chr(0xBB) . chr(0xBF)));
+
+    if ($type == "date") {
+      fputcsv($handle, array('วันที่', 'จำนวนคนที่มาใช้บริการ'));
+    } else if ($type == "we") {
+      fputcsv($handle, array('สัปดาห์ที่', 'จำนวนคนที่มาใช้บริการ'));
+    } else if ($type == "mo") {
+      fputcsv($handle, array('เดือนที่', 'จำนวนคนที่มาใช้บริการ'));
+    } else if ($type == "ye") {
+      fputcsv($handle, array('ปีที่', 'จำนวนคนที่มาใช้บริการ'));
+    } else if ($type == "old_cust") {
+      fputcsv($handle, array('รหัสบัตรประชาชน', 'จำนวนครั้งที่มาใช้บริการ'));
+    } else if ($type == "custom") {
+      fputcsv($handle, array('วันที่', 'จำนวนคนที่มาใช้บริการ'));
+    } else if ($type == "hist_cust") {
+      fputcsv($handle, array('ลำดับ', 'ชื่อผู้ใช้','แอตทริบิวต์', 'โอเปอร์เรเตอร์','ค่าของข้อมูบ', 'เวลาเริ่มต้น','เวลาสิ้นสุด'));
+    }
+
+
     foreach ($data as $row) {
-     fputcsv($handle, $row);
+      fputcsv($handle, $row);
     }
 
     ob_flush();
@@ -153,26 +169,30 @@ class Report extends CI_Controller
         case "day":
           $this->export_headers("ข้อมูลลูกค้ารายวัน.csv");
           $data = $this->ReportModel->fetch_report_by_day();
+          $type = "date";
           break;
         case "week";
           $this->export_headers("ข้อมูลลูกค้ารายสัปดาห์.csv");
           $data = $this->ReportModel->fetch_report_by_week();
+          $type = "we";
           break;
         case "month";
           $this->export_headers("ข้อมูลลูกค้ารายเดือน.csv");
           $data = $this->ReportModel->fetch_report_by_month();
+          $type = "mo";
           break;
         case "year";
           $this->export_headers("ข้อมูลลูกค้ารายปี.csv");
           $data = $this->ReportModel->fetch_report_by_year();
+          $type = "ye";
           break;
         case "old_cust";
           $this->export_headers("ข้อมูลลูกค้าที่กลับมาใช้ซ้ำ.csv");
+          $type = "old_cust";
           $data = $this->ReportModel->fetch_report_by_old_cust();
           break;
       }
-
-      $this->export_CSV($data);
+      $this->export_CSV($data, $type);
       die();
     }
   }
@@ -189,7 +209,8 @@ class Report extends CI_Controller
       );
 
       $result = $this->ReportModel->fetch_report_by_custom($data);
-      $this->export_CSV($result);
+      $type = "custom";
+      $this->export_CSV($result, $type);
     }
   }
 
@@ -198,6 +219,7 @@ class Report extends CI_Controller
     $name = "ข้อมูลประวัติการใช้งานของลูกค้า.csv";
     $this->export_headers($name);
     $result = $this->ReportModel->fetch_report_hist_cust();
-    $this->export_CSV($result);
+    $type = "hist_cust";
+    $this->export_CSV($result, $type);
   }
 }

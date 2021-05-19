@@ -50,7 +50,7 @@ class ReportModel extends CI_Model
 
   public function fetch_report_by_old_cust()
   {
-    $sql = "SELECT COUNT(id) as total, ssn 
+    $sql = "SELECT ssn , COUNT(id) as total
     FROM customer_register 
     GROUP BY ssn 
     ";
