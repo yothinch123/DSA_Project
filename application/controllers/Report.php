@@ -115,9 +115,11 @@ class Report extends CI_Controller
   {
     $handle = fopen('php://output', 'w');
     ob_clean();
-
+    fputs($handle,(chr(0xEF).chr(0xBB).chr(0xBF)));
+    fputcsv($handle, array('No', 'วันที่', 'ชื่อ', 'อายุ', 'อีเมล', 'โทร', 'ขนาดห้องที่สนใจ', 'วัตถุประสงค์', 'งบประมาณ'));
+     
     foreach ($data as $row) {
-      fputcsv($handle, $row);
+     fputcsv($handle, $row);
     }
 
     ob_flush();
