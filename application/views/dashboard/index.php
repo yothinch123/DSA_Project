@@ -122,7 +122,6 @@
   app.controller('reportCtrl', function($scope, $http) {
     $scope._fetchData = function() {
       $scope._report_today();
-      // $scope._fetch_customer();
     }
 
     $scope._report_today = function() {

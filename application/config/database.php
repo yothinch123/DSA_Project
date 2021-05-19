@@ -75,9 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.1.100',
-	'username' => 'radius',
-	'password' => 'radpass',
+	// 'hostname' => '192.168.1.100',
+	'hostname' => 'localhost',
+	// 'username' => 'radius',
+	'username' => 'root',
+	// 'password' => 'radpass',
+	'password' => '',
 	'database' => 'radius',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

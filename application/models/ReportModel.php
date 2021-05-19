@@ -84,6 +84,16 @@ class ReportModel extends CI_Model
     return $query->result_array();
   }
 
+  public function fetch_report_hist_cust()
+  {
+    $sql = "SELECT *
+    FROM radcheck
+    ";
+
+    $query = $this->db->query($sql);
+    return $query->result_array();
+  }
+
   public function round_report_hour()
   {
     $hours = [

@@ -1,11 +1,12 @@
 <div class="container-fluid" id="container-wrapper" style="margin-top: 90px;">
   <div class="row mb-3">
     <div class="col-xl-12 col-lg-12">
-      <div class="card mb-4">
+      <div class="card mb-4" ng-app="reportApp" ng-controller="reportCtrl" ng-init="_fetchData()">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
           <h5 class="m-0 text-white">รายละเอียดข้อมูลและสถิติเกี่ยวกับการใช้งานของลูกค้า</h5>
+          <button class="btn btn-success" ng-click="_export_hist()">ส่งออกประวัติการใช้งานของลูกค้า <i class="fas fa-file-download"></i></button>
         </div>
-        <div class="card-body" ng-app="reportApp" ng-controller="reportCtrl" ng-init="_fetchData()">
+        <div class="card-body">
           <div style="width: 30%;float: right;" id="select">
             <select class="custom-select" style="cursor: pointer;" onchange="select_view(this)">
               <option value="stat_customer">กราฟแสดงจำนวนของลูกค้า</option>
@@ -321,6 +322,9 @@
       location.href = "<?php echo base_url('Report/export_data?') ?>" + "type=" + type;
     }
 
+    $scope._export_hist = function(type) {
+      location.href = "<?php echo base_url('Report/export_hist_cust?') ?>";
+    }
     $scope._export_csv_custom = function() {
       $scope.d_start = $scope.date_start.toISOString().slice(0, 10),
         $scope.d_end = $scope.date_end.toISOString().slice(0, 10),

@@ -190,4 +190,12 @@ class Report extends CI_Controller
       $this->export_CSV($result);
     }
   }
+
+  public function export_hist_cust()
+  {
+    $name = "ข้อมูลประวัติการใช้งานของลูกค้า.csv";
+    $this->export_headers($name);
+    $result = $this->ReportModel->fetch_report_hist_cust();
+    $this->export_CSV($result);
+  }
 }
