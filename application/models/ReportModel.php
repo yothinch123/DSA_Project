@@ -103,7 +103,7 @@ class ReportModel extends CI_Model
     ];
 
     $sql_trunc = "TRUNCATE TABLE tbl_hour";
-    $query_trunc = $this->db->query($sql_trunc);
+    $this->db->query($sql_trunc);
 
     for ($i = 0; $i < count($hours); $i++) {
       $j = $i + 1;

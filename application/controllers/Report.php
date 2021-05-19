@@ -12,7 +12,7 @@ class Report extends CI_Controller
 
   public function roundFetch()
   {
-    // $this->ReportModel->round_report_hour();
+    $this->ReportModel->round_report_hour();
     $this->ReportModel->round_report_day();
     $this->ReportModel->round_report_week();
     $this->ReportModel->round_report_month();
@@ -130,7 +130,7 @@ class Report extends CI_Controller
     } else if ($type == "custom") {
       fputcsv($handle, array('วันที่', 'จำนวนคนที่มาใช้บริการ'));
     } else if ($type == "hist_cust") {
-      fputcsv($handle, array('ลำดับ', 'ชื่อผู้ใช้','แอตทริบิวต์', 'โอเปอร์เรเตอร์','ค่าของข้อมูบ', 'เวลาเริ่มต้น','เวลาสิ้นสุด'));
+      fputcsv($handle, array('ลำดับ', 'ชื่อผู้ใช้', 'แอตทริบิวต์', 'โอเปอร์เรเตอร์', 'ค่าของข้อมูบ', 'เวลาเริ่มต้น', 'เวลาสิ้นสุด'));
     }
 
 
