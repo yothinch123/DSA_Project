@@ -4,7 +4,7 @@
       <div class="card mb-4" ng-app="reportApp" ng-controller="reportCtrl" ng-init="_fetchData()">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
           <h5 class="m-0 text-white">รายละเอียดข้อมูลและสถิติเกี่ยวกับการใช้งานของลูกค้า</h5>
-          <button class="btn btn-success" ng-click="_export_hist()">ส่งออกประวัติการใช้งานของลูกค้า <i class="fas fa-file-download"></i></button>
+          <button class="btn btn-warning" ng-click="_export_hist()">ส่งออกประวัติการใช้งานของลูกค้า</button>
         </div>
         <div class="card-body">
           <div style="width: 30%;float: right;" id="select">
