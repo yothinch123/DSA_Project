@@ -62,7 +62,7 @@ class ReportModel extends CI_Model
   public function fetch_report_by_custom($data)
   {
     extract($data);
-    $sql = "SELECT COUNT(id) as total, DATE(register_time) AS register_time  
+    $sql = "SELECT DATE(register_time) AS register_time , COUNT(id) as total
     FROM customer_register
     WHERE register_time BETWEEN '$date_start' AND '$date_end'
     GROUP BY day(register_time), month(register_time), year(register_time) 
