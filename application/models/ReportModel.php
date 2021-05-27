@@ -50,8 +50,8 @@ class ReportModel extends CI_Model
 
   public function fetch_report_by_old_cust()
   {
-    $sql = "SELECT ssn , COUNT(id) as total
-    FROM customer_register 
+    $sql = "SELECT ssn , COUNT(ssn) as total
+    FROM customer 
     GROUP BY ssn 
     ";
 
@@ -62,8 +62,8 @@ class ReportModel extends CI_Model
   public function fetch_report_by_custom($data)
   {
     extract($data);
-    $sql = "SELECT DATE(register_time) AS register_time , COUNT(id) as total
-    FROM customer_register
+    $sql = "SELECT DATE(register_time) AS register_time , COUNT(ssn) as total
+    FROM customer
     WHERE register_time BETWEEN '$date_start' AND '$date_end'
     GROUP BY day(register_time), month(register_time), year(register_time) 
     ORDER BY register_time ASC
@@ -75,8 +75,8 @@ class ReportModel extends CI_Model
 
   public function fetch_report_total_by()
   {
-    $sql = "SELECT COUNT(id) as total
-    FROM customer_register 
+    $sql = "SELECT COUNT(ssn) as total
+    FROM customer 
     GROUP BY hour(register_time)
     ";
 
@@ -109,7 +109,7 @@ class ReportModel extends CI_Model
       $j = $i + 1;
       $sql = "INSERT INTO tbl_hour (total,time) VALUES
       ((SELECT COUNT(register_time)
-      FROM customer_register 
+      FROM customer 
       WHERE DATE_FORMAT(register_time, '%Y-%m-%d') = CURDATE() 
       AND DATE_FORMAT(register_time,'%H:%i:%s') BETWEEN '$hours[$i]'
       AND '$hours[$j]') ,'$hours[$i]')
@@ -129,8 +129,8 @@ class ReportModel extends CI_Model
     $sql_trunc = "TRUNCATE TABLE tbl_day";
 
     $sql = "INSERT INTO tbl_day (time,total)
-    SELECT DATE(register_time) , COUNT(id)
-    FROM customer_register 
+    SELECT DATE(register_time) , COUNT(ssn)
+    FROM customer 
     GROUP BY day(register_time), month(register_time), year(register_time) 
     ORDER BY register_time ASC
     ";
@@ -150,8 +150,8 @@ class ReportModel extends CI_Model
     $sql_trunc = "TRUNCATE TABLE tbl_week";
 
     $sql = "INSERT INTO tbl_week (time,total)
-    SELECT FROM_DAYS(TO_DAYS(register_time) -MOD(TO_DAYS(register_time) -1, 7)) , COUNT(id)
-    FROM customer_register
+    SELECT FROM_DAYS(TO_DAYS(register_time) -MOD(TO_DAYS(register_time) -1, 7)) , COUNT(ssn)
+    FROM customer
     GROUP BY FROM_DAYS(TO_DAYS(register_time) -MOD(TO_DAYS(register_time) -1, 7))
     ORDER BY FROM_DAYS(TO_DAYS(register_time) -MOD(TO_DAYS(register_time) -1, 7))
     ";
@@ -171,8 +171,8 @@ class ReportModel extends CI_Model
     $sql_trunc = "TRUNCATE TABLE tbl_month";
 
     $sql = "INSERT INTO tbl_month (time,total)
-    SELECT CONCAT(year(register_time),'-', LPAD(month(register_time),2,'0')) , COUNT(id) 
-    FROM customer_register 
+    SELECT CONCAT(year(register_time),'-', LPAD(month(register_time),2,'0')) , COUNT(ssn) 
+    FROM customer 
     GROUP BY month(register_time), year(register_time) 
     ORDER BY year(register_time),month(register_time) ASC
     ";
@@ -192,8 +192,8 @@ class ReportModel extends CI_Model
     $sql_trunc = "TRUNCATE TABLE tbl_year";
 
     $sql = "INSERT INTO tbl_year (time,total)
-    SELECT year(register_time) , COUNT(id)  
-    FROM customer_register 
+    SELECT year(register_time) , COUNT(ssn)  
+    FROM customer 
     GROUP BY year(register_time) 
     ORDER BY year(register_time) ASC
     ";

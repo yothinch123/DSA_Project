@@ -14,7 +14,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label for="ssn">รหัสบัตรประชาชน <b style="color: #f73859;">*</b> </label>
-                      <input type="text" class="form-control" id="ssn" ng-model="ssn" autocomplete="off">
+                      <input type="number" class="form-control" id="ssn" ng-model="ssn" autocomplete="off">
                       <small id="ssn" class="form-text text-muted">Example : 123465</small>
                     </div>
                   </div>
@@ -37,7 +37,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label for="phone">เบอร์โทรศัพท์ <b style="color: #f73859;">*</b> </label>
-                      <input type="text" class="form-control" id="phone" ng-model="phone" autocomplete="off">
+                      <input type="tel" class="form-control" id="phone" ng-model="phone" autocomplete="off">
                       <small id="phone" class="form-text text-muted">Example : 0930000000</small>
                     </div>
                   </div>
@@ -109,7 +109,7 @@
         'id': <?php echo $_GET['id'] ?>,
       }).then(function(response) {
         var user = response.data;
-        $scope.ssn = user.ssn,
+        $scope.ssn = parseInt(user.ssn),
           $scope.fname = user.fname,
           $scope.lname = user.lname,
           $scope.username = user.username,
@@ -174,7 +174,7 @@
     }
 
     $scope._check = function() {
-      if ($scope.ssn == undefined || $scope.ssn == '' || $scope.ssn.length !== 13) {
+      if ($scope.ssn == undefined || $scope.ssn == '' || $scope.ssn.toString().length !== 13) {
         Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่รหัสบัตรประชาชนให้ครบ 13 หลัก', 'warning')
         return false
       } else if ($scope.fname == undefined || $scope.fname == '') {
@@ -183,11 +183,11 @@
       } else if ($scope.lname == undefined || $scope.lname == '') {
         Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่นามสกุล', 'warning')
         return false
+      } else if ($scope.phone == undefined || $scope.phone == '' || $scope.phone.toString().length !== 10) {
+        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่เบอร์มือถือ 10 หลัก', 'warning')
+        return false
       } else if ($scope.username == undefined || $scope.username == '') {
         Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่ชื่อผู้ใช้', 'warning')
-        return false
-      } else if ($scope.phone == undefined || $scope.phone == '' || $scope.phone.length !== 10) {
-        Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่เบอร์มือถือ 10 หลัก', 'warning')
         return false
       } else if ($scope.jobtitle == undefined || $scope.jobtitle == '') {
         Swal.fire('กรุณาใส่ข้อมูลให้ครบ !', 'กรุณาใส่ตำแหน่ง', 'warning')

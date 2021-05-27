@@ -34,21 +34,21 @@
               <div class="tab-pane fade show active" id="day" role="tabpanel" aria-labelledby="day-tab"><br>
                 <div style="height: 69vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('day')"> csv</button>
-                  <canvas id="day_chart" width="400" height="150"></canvas>
+                  <canvas id="day_chart" width="400" height="50"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="weekend" role="tabpanel" aria-labelledby="weekend-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('week')"> csv</button>
-                  <canvas id="week_chart" width="400" height="150"></canvas>
+                  <canvas id="week_chart" width="400" height="50"></canvas>
                 </div>
               </div>
 
               <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab"><br>
                 <div style="height: 65vh; overflow-y: scroll;">
                   <button style="float: right;" class="btn btn-success mr-3" ng-click="_export_csv('month')"> csv</button>
-                  <canvas id="month_chart" width="400" height="100"></canvas>
+                  <canvas id="month_chart" width="400" height="50"></canvas>
                 </div>
               </div>
 
@@ -66,7 +66,7 @@
               <button style="float: right;" class="btn btn-success mt-2" ng-click="_export_csv('old_cust')"> csv</button>
             </div>
             <div class="pt-3" style="height: 65vh; overflow-y: scroll;">
-              <canvas id="old_cust_chart" width="400" height="150"></canvas>
+              <canvas id="old_cust_chart" width="400" height="50"></canvas>
             </div>
           </div>
 
@@ -77,15 +77,15 @@
                 <div></div>
                 <div>
                   <Label>จากวันที่</Label>
-                  <input class="btn btn-outline-light ml-2" ng-model="date_start" type="date">
+                  <input class="btn btn-outline-light ml-2" ng-model="date_start" id="date_start" type="date">
                   <Label class="ml-2">ถึงวันที่</Label>
-                  <input class="btn btn-outline-light ml-2" ng-model="date_end" type="date">
+                  <input class="btn btn-outline-light ml-2" ng-model="date_end" id="date_end" type="date">
                   <button class="btn btn-info ml-3" ng-click="_search_custom()"><i class="fas fa-search"></i> ค้นหา</button>
                 </div>
               </div>
             </div>
             <div style="height: 69vh; overflow-y: scroll;">
-              <canvas id="custom_chart" width="400" height="150"></canvas>
+              <canvas id="custom_chart" width="400" height="50"></canvas>
             </div>
           </div>
         </div>
@@ -275,15 +275,19 @@
       $scope.total_report_custom = [];
       $scope.register_report_custom = [];
 
-      if ($scope.date_start == undefined || $scope.date_end == undefined) {
+      var d_start = document.getElementById("date_start").value
+      var d_end = document.getElementById("date_end").value
+
+      if (d_start == undefined || d_end == undefined) {
+        // if ($scope.date_start == undefined || $scope.date_end == undefined) {
         Swal.fire({
           title: 'กรุณาเลือกวันที่ให้ครบ !',
           icon: 'warning',
         })
       } else {
         $http.post("<?php echo base_url("Report/fetchReportByCustom"); ?>", {
-          'date_start': $scope.date_start.toISOString().slice(0, 10),
-          'date_end': $scope.date_end.toISOString().slice(0, 10),
+          'date_start': d_start,
+          'date_end': d_end,
         }).then(function(response) {
           if (!response.data) {
             Swal.fire({
@@ -326,9 +330,9 @@
       location.href = "<?php echo base_url('Report/export_hist_cust?') ?>";
     }
     $scope._export_csv_custom = function() {
-      $scope.d_start = $scope.date_start.toISOString().slice(0, 10),
-        $scope.d_end = $scope.date_end.toISOString().slice(0, 10),
-        location.href = "<?php echo base_url('Report/export_data_custom?') ?>" + "date_start=" + $scope.d_start + "&date_end=" + $scope.d_end;
+      var d_start = document.getElementById("date_start").value
+      var d_end = document.getElementById("date_end").value
+      location.href = "<?php echo base_url('Report/export_data_custom?') ?>" + "date_start=" + d_start + "&date_end=" + d_end;
     }
   })
 

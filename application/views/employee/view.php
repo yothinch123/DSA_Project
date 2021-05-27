@@ -34,7 +34,7 @@
                      <td>
                        <a href="http://localhost/CPE/Base/view_employee_update?id={{employee.id}}" class="btn btn-outline-warning btn-sm"><i class="far fa-edit"></i></a>
                        <button id={{employee.id}} class="btn btn-outline-danger btn-sm" ng-click="_deleteID(employee.id)" value='Delete'><i class="fas fa-trash"></i></button>
-                     </td>
+                     </td>  
                      <td>
                        <button class="btn btn-outline-primary btn-sm" ng-click="_showLogin(employee.username,employee.fname)"><i class="fas fa-search"></i></button>
                      </td>

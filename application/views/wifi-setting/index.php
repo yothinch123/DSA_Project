@@ -27,7 +27,9 @@
         </div>
       </form>
     </div>
-    <div class="card mb-4">
+  </div>
+  
+  <div class="card mb-4" style="height: 300px;">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
         <h5 class="m-0 text-white">ตั้งค่ารหัสผ่านสำหรับเข้าอุปกรณ์</h5>
       </div>
@@ -44,8 +46,7 @@
         </div>
       </form>
     </div>
-  </div>
-  <div class="col-8">
+  <!-- <div class="col-8">
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
         <h5 class="m-0 text-white">ตั้งค่าข้อมูล Access Point</h5>
@@ -83,7 +84,7 @@
       </div>
       </form>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <script>

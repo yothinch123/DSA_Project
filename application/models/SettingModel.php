@@ -63,7 +63,7 @@ class SettingModel extends CI_Model
 
   function fetch_customer_by()
   {
-    $sql = "SELECT * FROM customer";
+    $sql = "SELECT * FROM customer GROUP BY ssn";
 
     $query = $this->db->query($sql);
     return $query->result();
@@ -71,7 +71,7 @@ class SettingModel extends CI_Model
   
   function fetch_customer_by_today()
   {
-    $sql = "SELECT COUNT(ssn) AS total FROM customer_register WHERE DATE(register_time) = CURDATE() GROUP BY ssn";
+    $sql = "SELECT COUNT(ssn) AS total FROM customer WHERE DATE(register_time) = CURDATE() GROUP BY ssn";
 
     $query = $this->db->query($sql);
     return $query->result();
