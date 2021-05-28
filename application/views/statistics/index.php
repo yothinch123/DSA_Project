@@ -4,7 +4,7 @@
       <div class="card mb-4" ng-app="reportApp" ng-controller="reportCtrl" ng-init="_fetchData()">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary">
           <h5 class="m-0 text-white">รายละเอียดข้อมูลและสถิติเกี่ยวกับการใช้งานของลูกค้า</h5>
-          <button class="btn btn-warning" ng-click="_export_hist()">ส่งออกประวัติการใช้งานของลูกค้า</button>
+          <button class="btn btn-success" ng-click="_export_hist()">ส่งออกประวัติการใช้งานของลูกค้า</button>
         </div>
         <div class="card-body">
           <div style="width: 30%;float: right;" id="select">
@@ -125,17 +125,31 @@
         var ctx = document.getElementById("day_chart").getContext('2d');
         var myChart = new Chart(ctx, {
           type: 'horizontalBar',
+          beginAtZero: true,
           data: {
             datasets: [{
               label: 'จำนวนลูกค้า',
               data: $scope.total_report_day,
-              backgroundColor: "#ca82f8",
+              backgroundColor: "#5893d4",
             }],
             labels: $scope.register_report_day,
             borderWidth: 1,
           },
           options: {
-            responsive: true
+            responsive: true,
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  callback: function(value) {
+                    if (Number.isInteger(value)) {
+                      return value;
+                    }
+                  },
+                  stepSize: 1
+                }
+              }]
+            }
           },
         });
       });
@@ -158,13 +172,26 @@
             datasets: [{
               label: 'จำนวนลูกค้า',
               data: $scope.total_report_week,
-              backgroundColor: "#ca82f8",
+              backgroundColor: "#5893d4",
             }],
             labels: $scope.register_report_week,
             borderWidth: 1,
           },
           options: {
-            responsive: true
+            responsive: true,
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  callback: function(value) {
+                    if (Number.isInteger(value)) {
+                      return value;
+                    }
+                  },
+                  stepSize: 1
+                }
+              }]
+            }
           },
         });
       });
@@ -187,21 +214,27 @@
             datasets: [{
               label: 'จำนวนลูกค้า',
               data: $scope.total_report_month,
-              backgroundColor: "#f38181",
+              backgroundColor: "#5893d4",
             }],
             labels: $scope.register_report_month,
             borderWidth: 1,
           },
           options: {
-            responsive: true
+            responsive: true,
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  callback: function(value) {
+                    if (Number.isInteger(value)) {
+                      return value;
+                    }
+                  },
+                  stepSize: 1
+                }
+              }]
+            }
           },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }],
-          }
         });
       });
     }
@@ -223,20 +256,26 @@
             datasets: [{
               label: 'จำนวนลูกค้า',
               data: $scope.total_report_year,
-              backgroundColor: "#f38181",
+              backgroundColor: "#5893d4",
             }],
             labels: $scope.register_report_year,
             borderWidth: 1,
           },
           options: {
-            responsive: true
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }],
+            responsive: true,
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  callback: function(value) {
+                    if (Number.isInteger(value)) {
+                      return value;
+                    }
+                  },
+                  stepSize: 1
+                }
+              }]
+            }
           }
         });
       });
@@ -259,13 +298,26 @@
             datasets: [{
               label: 'จำนวนครั้ง',
               data: $scope.total_report_old_cust,
-              backgroundColor: "#ca82f8",
+              backgroundColor: "#5893d4",
             }],
             labels: $scope.register_report_old_cust,
             borderWidth: 1,
           },
           options: {
-            responsive: true
+            responsive: true,
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  callback: function(value) {
+                    if (Number.isInteger(value)) {
+                      return value;
+                    }
+                  },
+                  stepSize: 1
+                }
+              }]
+            }
           },
         });
       });
@@ -308,13 +360,26 @@
                 datasets: [{
                   label: 'จำนวนลูกค้า',
                   data: $scope.total_report_custom,
-                  backgroundColor: "#ca82f8",
+                  backgroundColor: "#5893d4",
                 }],
                 labels: $scope.register_report_custom,
                 borderWidth: 1,
               },
               options: {
-                responsive: true
+                responsive: true,
+                scales: {
+                  xAxes: [{
+                    ticks: {
+                      beginAtZero: true,
+                      callback: function(value) {
+                        if (Number.isInteger(value)) {
+                          return value;
+                        }
+                      },
+                      stepSize: 1
+                    }
+                  }]
+                }
               },
             });
           }

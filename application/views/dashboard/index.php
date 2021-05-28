@@ -77,7 +77,7 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="day_chart" style="width: 500px;height:90%"></canvas>
+            <canvas id="day_chart" style="width: 500px;height:310px"></canvas>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
     <div class="col-xl-4 col-lg-5">
       <div class="card" style="height:200px;">
         <div class="card-header">
-          <h6 class="m-0 font-weight-bold text-primary">ไฟล์ข้อบังคับการใข้งาน</h6>
+          <h6 class="m-0 font-weight-bold text-primary">ไฟล์ข้อบังคับการใช้งาน</h6>
         </div>
         <div class="card-body text-center">
           <span class="text-dark">เป็นไฟล์ที่ระบุข้อตกลงก่อนเริ่มต้นการใช้งานเครือข่าย</span>
@@ -137,13 +137,25 @@
             datasets: [{
               label: 'จำนวนลูกค้า',
               data: $scope.total_customer_now,
-              backgroundColor: "#ca82f8",
+              backgroundColor: "#5893d4",
             }],
             labels: $scope.all_times,
             borderWidth: 1,
           },
           options: {
-            responsive: true
+            responsive: true,
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  callback: function(value) {
+                    if (Number.isInteger(value)) {
+                      return value;
+                    }
+                  }, 
+                }
+              }]
+            }
           },
         });
       });
